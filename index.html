@@ -24,6 +24,100 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="testimonials.css" />
+    <link rel="stylesheet" href="homepage.css" />
+    <link rel="stylesheet" href="cto-homepage.css" />
+    <style>
+      /* Center alignment for CTA Section */
+      .bilva-home .architecture-cta-body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+      }
+      .bilva-home .architecture-cta-copy {
+        max-width: 680px !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+      .bilva-home .architecture-cta-copy .home-kicker {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .bilva-home .architecture-cta-copy h2 {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .bilva-home .architecture-cta-copy > p:not(.home-kicker) {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 28px !important;
+      }
+      .bilva-home .architecture-cta .cta-primary-btn {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: inline-flex !important;
+      }
+      .bilva-home .architecture-cta .cta-utility-link {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 14px !important;
+      }
+
+      /* Section 05 / HOW WE ENGINEER SECURITY - Globe & Steps Layout */
+      .engineering-method .method-body {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: clamp(24px, 5vw, 64px);
+        align-items: center;
+        padding: clamp(30px, 5vw, 76px);
+      }
+      .method-globe-window {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 480px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .method-globe-window .globe-canvas-container {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: grab;
+      }
+      .method-globe-window .globe-canvas-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+      }
+      @media (max-width: 768px) {
+        .engineering-method .method-body {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .method-globe-window {
+          min-height: 340px;
+          height: 340px;
+        }
+      }
+    </style>
 
     <script type="importmap">
       {
@@ -33,8 +127,8 @@
         }
       }
     </script>
-  </head>
-  <body>
+  <link rel="stylesheet" href="bento-polish.css"></head>
+  <body class="bilva-home cto-home">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <div class="page">
@@ -140,167 +234,136 @@
       </section>
     </div>
 
-    <section class="solutions-section" id="our-solutions" aria-label="Our Solutions">
-      <div class="solutions-shell">
-        <div class="solutions-intro">
-          <p class="solutions-eyebrow">Our Solutions</p>
-          <h2 class="solutions-heading">Security engineered for connected systems.</h2>
-          <p class="solutions-copy">
-            From secure system architecture to connected devices and information security, Bilva Tech engineers protection around the technologies that matter.
-          </p>
+    <section class="about-home" id="about-bilva" aria-labelledby="about-home-heading">
+      <div class="section-box"><div class="section-meta"><span>01 / ABOUT US</span><span>THE PEOPLE BEHIND THE PROTECTION</span></div>
+<div class="about-home-body"><p class="home-kicker">ABOUT BILVA TECH</p><h2 id="about-home-heading">Built on engineering.<br>Focused on what matters.</h2><div class="about-home-copy"><p>We engineer security for critical workloads, connected devices, and enterprise systems.</p><p>Your environment and risks shape the architecture.</p><a class="home-text-link" href="about.html">Get to know Bilva Tech <span aria-hidden="true">↗</span></a></div></div>
+      </div>
+    </section>
+
+    <section class="solutions-bento" id="our-solutions" aria-labelledby="bento-heading">
+      <div class="section-box">
+        <div class="section-meta">
+          <span>02 / OUR SOLUTIONS</span>
+          <span>FOUR CORE DISCIPLINES</span>
         </div>
-
-
-        <div class="orbit-stack-container" id="orbit-stack-root">
-          <div class="orbit-stack-stage" id="orbit-stage" role="list" aria-label="Bilva Tech solutions orbit stack">
-            <article
-              class="orbit-card"
-              role="listitem"
-              tabindex="0"
-              data-index="0"
-              data-num="01"
-              data-name="Separation Kernel Hypervisor"
-              data-url="separation-kernel-hypervisor.html"
-              data-accent="#ff5722"
-              style="--card-accent: #ff5722; --card-accent-rgb: 255, 87, 34;"
-            >
-              <div class="orbit-portrait">
-                <div class="orbit-portrait-bg"></div>
-                <div class="orbit-portrait-core">
-                  <i class="fa-solid fa-layer-group"></i>
-                </div>
-                <span class="orbit-initials">SK</span>
-                <a href="separation-kernel-hypervisor.html" class="orbit-arrow" tabindex="-1" aria-label="Open Separation Kernel Hypervisor">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-              <div class="orbit-body">
-                <p class="orbit-role">Mission-Critical Computing</p>
-                <h3 class="orbit-title">Separation Kernel Hypervisor</h3>
-                <p class="orbit-desc">Secure, isolated and predictable computing for systems running multiple workloads on a shared platform.</p>
-                <div class="orbit-footer">
-                  <span class="orbit-stat">Kernel Isolation</span>
-                  <span class="orbit-cta-link">Explore <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="orbit-card"
-              role="listitem"
-              tabindex="0"
-              data-index="1"
-              data-num="02"
-              data-name="IoT Solutions"
-              data-url="iot-solutions.html"
-              data-accent="#ff7849"
-              style="--card-accent: #ff7849; --card-accent-rgb: 255, 120, 73;"
-            >
-              <div class="orbit-portrait">
-                <div class="orbit-portrait-bg"></div>
-                <div class="orbit-portrait-core">
-                  <i class="fa-solid fa-microchip"></i>
-                </div>
-                <span class="orbit-initials">IOT</span>
-                <a href="iot-solutions.html" class="orbit-arrow" tabindex="-1" aria-label="Open IoT Solutions">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-              <div class="orbit-body">
-                <p class="orbit-role">Connected Operations</p>
-                <h3 class="orbit-title">IoT Solutions</h3>
-                <p class="orbit-desc">Connecting devices, edge platforms, gateways and data securely across connected environments.</p>
-                <div class="orbit-footer">
-                  <span class="orbit-stat">Edge &amp; Gateway</span>
-                  <span class="orbit-cta-link">Explore <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="orbit-card"
-              role="listitem"
-              tabindex="0"
-              data-index="2"
-              data-num="03"
-              data-name="Cybersecurity Solutions"
-              data-url="cybersecurity-solutions.html"
-              data-accent="#ff914d"
-              style="--card-accent: #ff914d; --card-accent-rgb: 255, 145, 77;"
-            >
-              <div class="orbit-portrait">
-                <div class="orbit-portrait-bg"></div>
-                <div class="orbit-portrait-core">
-                  <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <span class="orbit-initials">SEC</span>
-                <a href="cybersecurity-solutions.html" class="orbit-arrow" tabindex="-1" aria-label="Open Cybersecurity Solutions">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-              <div class="orbit-body">
-                <p class="orbit-role">Embedded &amp; Platform Security</p>
-                <h3 class="orbit-title">Cybersecurity Solutions</h3>
-                <p class="orbit-desc">Security engineered across system architecture, authentication, data protection and platform integrity.</p>
-                <div class="orbit-footer">
-                  <span class="orbit-stat">Lifecycle Defense</span>
-                  <span class="orbit-cta-link">Explore <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="orbit-card"
-              role="listitem"
-              tabindex="0"
-              data-index="3"
-              data-num="04"
-              data-name="Information Security Consulting"
-              data-url="information-security-consulting.html"
-              data-accent="#f4511e"
-              style="--card-accent: #f4511e; --card-accent-rgb: 244, 81, 30;"
-            >
-              <div class="orbit-portrait">
-                <div class="orbit-portrait-bg"></div>
-                <div class="orbit-portrait-core">
-                  <i class="fa-solid fa-compass"></i>
-                </div>
-                <span class="orbit-initials">ISC</span>
-                <a href="information-security-consulting.html" class="orbit-arrow" tabindex="-1" aria-label="Open Information Security Consulting">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-              <div class="orbit-body">
-                <p class="orbit-role">Risk &amp; Resilience Strategy</p>
-                <h3 class="orbit-title">Information Security Consulting</h3>
-                <p class="orbit-desc">Risk-based security strategies covering architecture, governance, data protection, identity and readiness.</p>
-                <div class="orbit-footer">
-                  <span class="orbit-stat">Risk &amp; Governance</span>
-                  <span class="orbit-cta-link">Explore <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-              </div>
-            </article>
+        <div class="bento-body">
+          <div class="bento-intro">
+            <p class="home-kicker">OUR SOLUTIONS</p>
+            <h2 id="bento-heading">Four disciplines.<br>Security at every layer.</h2>
+            <p>Four services. Security across your system.</p>
           </div>
+          <div class="bento-grid">
+            <article class="bento-card bento-kernel">
+              <div class="bento-card-meta">
+                <span>01 / MISSION-CRITICAL COMPUTING</span>
+                <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </div>
+              <div class="bento-card-copy">
+                <h3>Separation Kernel Hypervisor</h3>
+                <p>Isolate critical workloads on shared hardware.</p>
+              </div>
+              <div class="bento-art" aria-hidden="true">
+                <div class="solution-scene kernel-scene">
+                  <div class="scene-caption">PARTITIONED EXECUTION</div>
+                  <div class="kernel-workloads">
+                    <div><span>PARTITION 01</span><b>Critical OS</b><small>Dedicated resources</small></div>
+                    <div><span>PARTITION 02</span><b>Standard OS</b><small>Independent workload</small></div>
+                    <div><span>PARTITION 03</span><b>Applications</b><small>Controlled access</small></div>
+                  </div>
+                  <div class="isolation-traces"><i></i><i></i><i></i></div>
+                  <div class="kernel-layer"><span class="scene-status"></span>SEPARATION KERNEL<span>ISOLATION BOUNDARY</span></div>
+                  <div class="hardware-layer"><span>CPU</span><span>MEMORY</span><span>I/O</span></div>
+                </div>
+              </div>
+            <div class="bento-actions"><button type="button" aria-expanded="false" aria-controls="bento-note-0">Explore architecture <span aria-hidden="true">+</span></button><a href="separation-kernel-hypervisor.html">View service ↗</a></div><p class="bento-note" id="bento-note-0" hidden>Memory and resources stay inside defined workload boundaries.</p></article>
 
-          <div class="orbit-controls" aria-label="Orbit card navigation">
-            <button type="button" class="orbit-nav-btn prev" id="orbit-prev" aria-label="Previous solution">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <div class="orbit-dots" id="orbit-dots">
-              <button type="button" class="orbit-dot active" data-index="0" aria-label="Go to solution 01"></button>
-              <button type="button" class="orbit-dot" data-index="1" aria-label="Go to solution 02"></button>
-              <button type="button" class="orbit-dot" data-index="2" aria-label="Go to solution 03"></button>
-              <button type="button" class="orbit-dot" data-index="3" aria-label="Go to solution 04"></button>
-            </div>
-            <button type="button" class="orbit-nav-btn next" id="orbit-next" aria-label="Next solution">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
+            <article class="bento-card bento-iot">
+              <div class="bento-card-meta">
+                <span>02 / DEVICE TO CLOUD</span>
+                <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </div>
+              <div class="bento-card-copy">
+                <h3>IoT &amp; Edge Solutions</h3>
+                <p>Connect devices with trusted identities and protected data flows.</p>
+              </div>
+              <div class="bento-art" aria-hidden="true">
+                <div class="solution-scene edge-scene">
+                  <div class="scene-caption">DEVICE → EDGE → CLOUD</div>
+                  <svg class="edge-topology" viewBox="0 0 500 210" fill="none">
+                    <path class="topology-route" d="M72 48h72q20 0 20 20v17q0 20 20 20h66M72 162h72q20 0 20-20v-17q0-20 20-20h66M250 105h64q20 0 20-20V68q0-20 20-20h74M250 105h64q20 0 20 20v17q0 20 20 20h74"/>
+                    <circle class="topology-orbit" cx="250" cy="105" r="62"/>
+                    <circle class="topology-orbit" cx="250" cy="105" r="46"/>
+                    <rect class="topology-core" x="225" y="80" width="50" height="50" rx="12"/>
+                    <path class="topology-icon" d="M242 99v-6a8 8 0 0 1 16 0v6m-18 0h20v16h-20z"/>
+                    <g class="topology-node">
+                      <rect x="42" y="23" width="60" height="50" rx="8"/>
+                      <rect x="42" y="137" width="60" height="50" rx="8"/>
+                      <rect x="398" y="23" width="60" height="50" rx="8"/>
+                      <rect x="398" y="137" width="60" height="50" rx="8"/>
+                    </g>
+                    <g class="topology-text">
+                      <text x="72" y="52">DEVICE</text>
+                      <text x="72" y="166">SENSOR</text>
+                      <text x="428" y="52">CLOUD</text>
+                      <text x="428" y="166">OTA</text>
+                    </g>
+                    <circle class="topology-signal" cx="164" cy="80" r="3"/>
+                    <circle class="topology-signal" cx="334" cy="132" r="3"/>
+                  </svg>
+                  <div class="scene-footnote">Trusted identity · Protected communication</div>
+                </div>
+              </div>
+            <div class="bento-actions"><button type="button" aria-expanded="false" aria-controls="bento-note-1">Explore architecture <span aria-hidden="true">+</span></button><a href="iot-solutions.html">View service ↗</a></div><p class="bento-note" id="bento-note-1" hidden>Device identity establishes trust before data crosses the gateway.</p></article>
+
+            <article class="bento-card bento-cyber">
+              <div class="bento-card-meta">
+                <span>03 / DEFENSE THROUGHOUT THE LIFECYCLE</span>
+                <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </div>
+              <div class="bento-card-copy">
+                <h3>Cybersecurity Solutions</h3>
+                <p>Protect platform integrity, access, and sensitive data.</p>
+              </div>
+              <div class="bento-art" aria-hidden="true">
+                <div class="solution-scene defense-scene">
+                  <div class="scene-caption">DEFENSE THROUGHOUT THE LIFECYCLE</div>
+                  <div class="defense-row"><span class="control-mark">01</span><div><b>Platform integrity</b><small>Secure boot &amp; trusted execution</small></div><span class="control-state">VERIFY</span></div>
+                  <div class="defense-row"><span class="control-mark">02</span><div><b>Identity &amp; access</b><small>Authentication &amp; least privilege</small></div><span class="control-state">RESTRICT</span></div>
+                  <div class="defense-row"><span class="control-mark">03</span><div><b>Data protection</b><small>Encryption &amp; controlled exchange</small></div><span class="control-state">PROTECT</span></div>
+                </div>
+              </div>
+            <div class="bento-actions"><button type="button" aria-expanded="false" aria-controls="bento-note-2">Explore architecture <span aria-hidden="true">+</span></button><a href="cybersecurity-solutions.html">View service ↗</a></div><p class="bento-note" id="bento-note-2" hidden>Boot integrity, identity, and encryption protect distinct layers.</p></article>
+
+            <article class="bento-card bento-consulting">
+              <div class="bento-card-meta">
+                <span>04 / ARCHITECTURE &amp; STRATEGY</span>
+                <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </div>
+              <div class="bento-card-copy">
+                <h3>Information Security Consulting</h3>
+                <p>Turn architectural risk into clear engineering priorities.</p>
+              </div>
+              <div class="bento-art" aria-hidden="true">
+                <div class="solution-scene architecture-scene">
+                  <div class="scene-caption">FROM EXPOSURE TO ENGINEERING PRIORITIES</div>
+                  <div class="architecture-flow">
+                    <div><span>01 / DISCOVER</span><b>System context</b><small>Assets · Interfaces · Dependencies</small></div>
+                    <i></i>
+                    <div><span>02 / ASSESS</span><b>Threat model</b><small>Boundaries · Risks · Controls</small></div>
+                    <i></i>
+                    <div><span>03 / DEFINE</span><b>Security roadmap</b><small>Priorities · Ownership · Validation</small></div>
+                  </div>
+                  <div class="architecture-baseline"><span>ARCHITECTURE</span><span>GOVERNANCE</span><span>IMPLEMENTATION</span></div>
+                </div>
+              </div>
+            <div class="bento-actions"><button type="button" aria-expanded="false" aria-controls="bento-note-3">Explore architecture <span aria-hidden="true">+</span></button><a href="information-security-consulting.html">View service ↗</a></div><p class="bento-note" id="bento-note-3" hidden>Context and threat analysis guide an actionable security roadmap.</p></article>
           </div>
         </div>
       </div>
     </section>
 
     <section class="protect-section" id="what-we-protect" aria-label="What We Protect">
+      <div class="section-box"><div class="section-meta"><span>03 / WHAT WE PROTECT</span><span>YOUR CRITICAL ENVIRONMENT</span></div>
       <div class="protect-shell">
         <div class="protect-intro">
           <p class="protect-eyebrow">What We Protect</p>
@@ -353,136 +416,163 @@
           <p>Security starts with understanding what needs to be protected.</p>
         </div>
       </div>
+          </div>
     </section>
 
-    <section id="bta-system-architecture" aria-label="System Architecture">
-      <div class="bta-container">
-        
-        <!-- LEFT PANEL: Content & Controls -->
-        <div class="bta-sidebar">
-          <p class="bta-eyebrow">SYSTEM ARCHITECTURE</p>
-          <h2 class="bta-heading">Security across every connected layer.</h2>
-          <p class="bta-description">Security is engineered across the workloads, devices, infrastructure and data that work together.</p>
-          
-          <!-- Mode Selectors -->
-          <div class="bta-controls" role="tablist">
-            <button class="bta-tab active" data-mode="kernel" role="tab" aria-selected="true">KERNEL</button>
-            <button class="bta-tab" data-mode="iot" role="tab" aria-selected="false">IOT</button>
-            <button class="bta-tab" data-mode="cybersecurity" role="tab" aria-selected="false">CYBERSECURITY</button>
-            <button class="bta-tab" data-mode="consulting" role="tab" aria-selected="false">CONSULTING</button>
+    <section class="service-dial" id="service-showcase" aria-label="Explore our services" data-service="0">
+      <div class="service-dial-frame">
+        <div class="service-dial-meta"><span>ENGINEERED FOR TRUST</span><span>OUR EXPERTISE / <b id="service-count">01</b> — 03</span></div>
+        <div class="service-dial-visual" aria-hidden="true">
+          <svg viewBox="0 0 800 380" fill="none">
+            <defs>
+              <linearGradient id="dial-metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#75707f" stop-opacity=".24"/><stop offset=".4" stop-color="#25212d" stop-opacity=".5"/><stop offset="1" stop-color="#101014"/></linearGradient>
+              <radialGradient id="dial-tint" cx=".5" cy="0" r="1"><stop stop-color="currentColor" stop-opacity=".5"/><stop offset=".55" stop-color="currentColor" stop-opacity=".12"/><stop offset="1" stop-color="currentColor" stop-opacity=".03"/></radialGradient>
+              <linearGradient id="dial-beam" x1="0" y1="0" x2="0" y2="1"><stop stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
+            </defs>
+            <path d="M48 365 A352 352 0 0 1 752 365" stroke="white" stroke-opacity=".035"/>
+            <path d="M76 365 A324 324 0 0 1 724 365" stroke="white" stroke-opacity=".055" stroke-width="5"/>
+            <path d="M174 365 A226 226 0 0 1 626 365" stroke="white" stroke-opacity=".07"/>
+            <path d="M195 365 A205 205 0 0 1 605 365" stroke="url(#dial-metal)" stroke-width="14"/>
+            <path d="M215 365 A185 185 0 0 1 585 365" stroke="white" stroke-opacity=".08" stroke-dasharray="2 17"/>
+            <g class="dial-segment is-active" data-segment="0"><path class="dial-surface" d="M128 238 A300 300 0 0 1 292 85 L318 156 A224 224 0 0 0 197 270 Z"/><path class="dial-edge" d="M128 238 A300 300 0 0 1 292 85"/><g transform="translate(226 177)" class="dial-icon"><rect x="-13" y="-13" width="26" height="26" rx="3"/><path d="M-5 -13 V13 M5 -13 V13 M-20 -6 H-13 M-20 6 H-13 M13 -6 H20 M13 6 H20 M-6 -20 V-13 M6 -20 V-13 M-6 13 V20 M6 13 V20"/></g></g>
+            <g class="dial-segment" data-segment="1"><path class="dial-surface" d="M298 83 A300 300 0 0 1 502 83 L476 154 A224 224 0 0 0 324 154 Z"/><path class="dial-edge" d="M298 83 A300 300 0 0 1 502 83"/><g transform="translate(400 113)" class="dial-icon"><rect x="-7" y="-7" width="14" height="14" rx="3"/><circle cx="-19" cy="15" r="4"/><circle cx="19" cy="15" r="4"/><circle cy="-22" r="4"/><path d="M0 -7 V-18 M-5 6 L-16 12 M5 6 L16 12"/></g></g>
+            <g class="dial-segment" data-segment="2"><path class="dial-surface" d="M508 85 A300 300 0 0 1 672 238 L603 270 A224 224 0 0 0 482 156 Z"/><path class="dial-edge" d="M508 85 A300 300 0 0 1 672 238"/><g transform="translate(574 177)" class="dial-icon"><path d="M0 -20 L16 -13 V0 Q16 13 0 21 Q-16 13 -16 0 V-13 Z M-7 0 L-1 6 L9 -5"/></g></g>
+            <g class="dial-pointer"><path d="M400 163 V221" stroke="url(#dial-beam)" stroke-width="3"/><path d="M394 164 H406" stroke="currentColor" stroke-width="2"/></g>
+          </svg>
+          <div class="dial-core"><span class="dial-core-dot"></span><span id="dial-core-label">ISOLATE</span><span class="dial-core-line"></span></div>
+        </div>
+        <div class="service-dial-tabs" role="tablist" aria-label="Services">
+          <button id="service-tab-0" role="tab" aria-selected="true" aria-controls="service-panel-0" tabindex="0"><span>01</span> Separation Kernel Hypervisor</button>
+          <button id="service-tab-1" role="tab" aria-selected="false" aria-controls="service-panel-1" tabindex="-1"><span>02</span> IoT &amp; Edge Solutions</button>
+          <button id="service-tab-2" role="tab" aria-selected="false" aria-controls="service-panel-2" tabindex="-1"><span>03</span> Consulting &amp; Architecture</button>
+        </div>
+        <div class="service-dial-panels">
+          <div id="service-panel-0" role="tabpanel" aria-labelledby="service-tab-0" tabindex="0">
+            <p class="service-dial-eyebrow">SEPARATION KERNEL HYPERVISOR</p>
+            <h2>Kernel separation.<br>Uncompromising isolation.</h2>
+            <p class="service-dial-copy">Keep critical workloads independent with hardware-enforced memory segmentation, dedicated CPU affinity, and deterministic timing budgets — for safety-critical and standard operating systems.</p>
+            <a href="separation-kernel-hypervisor.html">Explore kernel separation <span aria-hidden="true">↗</span></a>
           </div>
+          <div id="service-panel-1" role="tabpanel" aria-labelledby="service-tab-1" tabindex="0" hidden>
+            <p class="service-dial-eyebrow">IOT &amp; EDGE SOLUTIONS</p>
+            <h2>Connected by design.<br>Secured at every edge.</h2>
+            <p class="service-dial-copy">Establish device identity from silicon root of trust to cloud telemetry. Protect every connection with encrypted message routing, mutual TLS authentication, and verified atomic OTA recovery.</p>
+            <a href="iot-solutions.html">Explore connected architectures <span aria-hidden="true">↗</span></a>
+          </div>
+          <div id="service-panel-2" role="tabpanel" aria-labelledby="service-tab-2" tabindex="0" hidden>
+            <p class="service-dial-eyebrow">CONSULTING &amp; ARCHITECTURE</p>
+            <h2>Security by design.<br>Resilience from the start.</h2>
+            <p class="service-dial-copy">Build stronger foundations with architectural threat modeling, least-privilege boundaries, and vulnerability assessments aligned with IEC 62443, ISO 27001, and zero-trust engineering.</p>
+            <a href="information-security-consulting.html">Explore security consulting <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="service-dial-bottom"><span>THREE DISCIPLINES. ONE SECURE FOUNDATION.</span><button class="dial-playback" type="button" aria-pressed="false">Pause animation <span aria-hidden="true">Ⅱ</span></button></div>
+      </div>
+    </section>
 
-          <!-- Interaction Tools -->
-          <div class="bta-tools">
-            <button id="bta-toggle-view" class="bta-tool-btn">
-              <span class="icon">⬍</span> EXPLODE VIEW
+    <section class="engineering-method" id="why-bilvatech" aria-labelledby="method-heading">
+      <div class="section-box">
+        <div class="section-meta">
+          <span>05 / HOW WE ENGINEER SECURITY</span>
+          <span>CONTEXT → ARCHITECTURE → ASSURANCE</span>
+        </div>
+        <div class="method-body">
+          <div class="method-globe-window why-visual" aria-hidden="true">
+            <div id="globe-canvas-container" class="globe-canvas-container">
+              <div id="globe-loader" class="globe-loader">Loading Architecture...</div>
+            </div>
+          </div>
+          <ol class="method-steps">
+            <li>
+              <span>01</span>
+              <div>
+                <h3>Understand the environment</h3>
+                <p>Map assets, interfaces, and operational constraints.</p>
+                <small>FOCUS / System context &amp; constraints</small>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <h3>Define the trust boundaries</h3>
+                <p>Define trust boundaries, access, and protected data flows.</p>
+                <small>FOCUS / Threat model &amp; architecture</small>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <h3>Plan for implementation</h3>
+                <p>Agree priorities, integration requirements, and validation criteria.</p>
+                <small>FOCUS / Delivery &amp; assurance planning</small>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonials" aria-label="Customer Perspectives">
+      <div class="section-box"><div class="section-meta"><span>06 / CUSTOMER PERSPECTIVES</span><span>REAL-WORLD REQUIREMENTS</span></div>
+      <div class="testimonials-shell">
+        <div class="testimonials-header-row">
+          <p class="testimonials-eyebrow">CUSTOMER PERSPECTIVES</p>
+          <h2 class="testimonials-heading">Security Built Around Real-World Requirements.</h2>
+          <p class="testimonials-copy">
+            Every system has different security requirements. Explore perspectives on the challenges, decisions, and engineering considerations behind secure connected systems.
+          </p>
+          <div class="testimonials-view-controls" role="group" aria-label="Perspectives display mode">
+            <button
+              type="button"
+              class="view-toggle-btn is-active"
+              data-target-view="marquee"
+              aria-pressed="true"
+            >
+              <i class="fa-solid fa-arrows-left-right" aria-hidden="true"></i>
+              <span>Animated Perspectives</span>
+            </button>
+            <button
+              type="button"
+              class="view-toggle-btn"
+              data-target-view="factual"
+              aria-pressed="false"
+            >
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              <span>Engineering Highlights</span>
             </button>
           </div>
-
-          <!-- Dynamic Info Box -->
-          <div class="bta-info-box" aria-live="polite" id="bta-info-box">
-            <h4 id="bta-info-title">System Architecture</h4>
-            <p id="bta-info-desc">Select a mode above. Hover over a layer to inspect it, or <strong>click to pin</strong> its details.</p>
-          </div>
-        </div>
-
-        <!-- RIGHT PANEL: Interactive 2.5D Visualization -->
-        <div class="bta-visual" id="bta-visual-container">
-          <div class="bta-grid-floor"></div>
-          <div class="bta-isometric-world" id="bta-world" data-state="exploded">
-            <!-- Layers will be injected here via JavaScript -->
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="why-section" id="why-bilvatech" aria-label="Why Bilva Tech">
-      <div class="why-shell">
-        <div class="why-content">
-          <p class="why-eyebrow">Why Bilva Tech</p>
-          <h2 class="why-heading">Security built around your environment.</h2>
-          <p class="why-copy">
-            We don't apply the same security model to every system.
-            We understand the technology environment, security requirements
-            and risk exposure first — then engineer security around the
-            specific needs of the system.
-          </p>
-
-          <div class="why-principles" role="list">
-            <article class="why-principle" data-principle="0" role="listitem" tabindex="0">
-              <div class="principle-indicator" aria-hidden="true"></div>
-              <div class="principle-body">
-                <div class="principle-header">
-                  <span class="principle-num">01</span>
-                  <span class="principle-sep">—</span>
-                  <h3 class="principle-title">SECURITY BY DESIGN</h3>
-                </div>
-                <p class="principle-desc">Security built into the architecture from the beginning.</p>
-              </div>
-            </article>
-
-            <article class="why-principle" data-principle="1" role="listitem" tabindex="0">
-              <div class="principle-indicator" aria-hidden="true"></div>
-              <div class="principle-body">
-                <div class="principle-header">
-                  <span class="principle-num">02</span>
-                  <span class="principle-sep">—</span>
-                  <h3 class="principle-title">SYSTEM-LEVEL THINKING</h3>
-                </div>
-                <p class="principle-desc">Security across devices, software, data and connectivity.</p>
-              </div>
-            </article>
-
-            <article class="why-principle" data-principle="2" role="listitem" tabindex="0">
-              <div class="principle-indicator" aria-hidden="true"></div>
-              <div class="principle-body">
-                <div class="principle-header">
-                  <span class="principle-num">03</span>
-                  <span class="principle-sep">—</span>
-                  <h3 class="principle-title">MISSION-CRITICAL FOCUS</h3>
-                </div>
-                <p class="principle-desc">Isolation, control, predictability and resilience.</p>
-              </div>
-            </article>
-
-            <article class="why-principle" data-principle="3" role="listitem" tabindex="0">
-              <div class="principle-indicator" aria-hidden="true"></div>
-              <div class="principle-body">
-                <div class="principle-header">
-                  <span class="principle-num">04</span>
-                  <span class="principle-sep">—</span>
-                  <h3 class="principle-title">TAILORED APPROACH</h3>
-                </div>
-                <p class="principle-desc">Security aligned with technology, risk and operational requirements.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="why-visual">
-          <div id="globe-canvas-container" class="globe-canvas-container">
-            <div id="globe-loader" class="globe-loader">Loading Architecture...</div>
-          </div>
         </div>
       </div>
+
+      <!-- Dual-Direction Opposing Marquee Viewport (Framer Animation Reference) -->
+      <div class="testimonials-marquee-viewport" id="testimonials-marquee-viewport">
+        <!-- Row 1: Right to Left continuous marquee -->
+        <div class="marquee-row marquee-row-1" id="testimonials-row-1" aria-label="Technical Perspectives Row 1"></div>
+        <!-- Row 2: Left to Right continuous marquee -->
+        <div class="marquee-row marquee-row-2" id="testimonials-row-2" aria-label="Technical Perspectives Row 2"></div>
+      </div>
+
+      <!-- Factual Engineering Alternative View (Non-Simulated Fallback) -->
+      <div class="factual-perspectives-container" id="factual-perspectives-view" aria-label="Factual Engineering Highlights"></div>
+          </div>
     </section>
 
-    <section class="cta-section" id="final-cta" aria-label="Final Call to Action">
-      <div class="cta-bg-grid" aria-hidden="true"></div>
-      <div class="cta-shell">
-        <p class="cta-eyebrow">Secure What Matters</p>
-        <h2 class="cta-heading">Let's engineer security around your system.</h2>
-        <p class="cta-copy">
-          Talk to our team about your technology environment, security requirements and risk exposure.
-        </p>
-        <div class="cta-actions">
-          <a href="contact.html" class="cta-primary-btn">
-            Start a Conversation <i class="fa-solid fa-arrow-right"></i>
-          </a>
-          <a href="solutions.html" class="cta-secondary-link">
-            Explore Our Solutions <i class="fa-solid fa-arrow-right"></i>
-          </a>
+    <section class="compact-faq" id="faq" aria-labelledby="faq-heading"><div class="section-box"><div class="section-meta"><span>07 / FAQ</span><span>BEFORE WE BEGIN</span></div><div class="compact-faq-body"><div><p class="home-kicker">A FEW PRACTICAL ANSWERS</p><h2 id="faq-heading">Let’s make<br>the next step clear.</h2></div><div><details><summary>Where can Bilva Tech help?<span aria-hidden="true">+</span></summary><p>We support workload isolation, connected devices, platform security, and security architecture.</p></details><details><summary>Can you work with our existing platform?<span aria-hidden="true">+</span></summary><p>Yes. We scope integration around your hardware, software, existing controls, and operational constraints.</p></details><details><summary>How does an engagement begin?<span aria-hidden="true">+</span></summary><p>We review your system context and priorities, then agree the technical scope and next steps.</p></details><details><summary>Do you support both architecture and implementation?<span aria-hidden="true">+</span></summary><p>Our services span architecture, integration, and verification. The delivery scope depends on your platform and requirements.</p></details><details><summary>What should we share in the first conversation?<span aria-hidden="true">+</span></summary><p>A brief system overview, your main security challenge, and any delivery constraints are enough to start.</p></details></div></div></div></section>
+
+    <section class="architecture-cta" id="final-cta" aria-labelledby="cta-heading">
+      <div class="section-box">
+        <div class="section-meta">
+          <span>08 / START A TECHNICAL CONVERSATION</span>
+          <span>BUILT AROUND YOUR SYSTEM</span>
+        </div>
+        <div class="architecture-cta-body">
+          <div class="architecture-cta-copy">
+            <p class="home-kicker">WHAT ARE YOU BUILDING?</p>
+            <h2 id="cta-heading">Build security in.<br>From the start.</h2>
+            <p>Tell us what you’re building. We’ll help define the next step.</p>
+            <a class="cta-primary-btn" href="contact.html">Discuss your project <span aria-hidden="true">→</span></a>
+            <a class="cta-utility-link" href="cybersecurity-solutions.html">Looking for QR code solutions? <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
     </section>
@@ -490,6 +580,8 @@
     <footer class="site-footer"></footer>
     <script src="main.js"></script>
     <script type="module" src="why-globe.js"></script>
-    <script src="architecture.js"></script>
-  </body>
+    <script src="service-dial.js"></script>
+    <script type="module" src="testimonials.js"></script>
+    <script src="cto-homepage.js"></script>
+  <script src="bento-polish.js"></script></body>
 </html>

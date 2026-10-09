@@ -322,8 +322,47 @@ function initOrbitCardStack() {
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initOrbitCardStack);
+  document.addEventListener("DOMContentLoaded", () => {
+    initOrbitCardStack();
+    initFaqAccordion();
+  });
 } else {
   initOrbitCardStack();
+  initFaqAccordion();
+}
+
+/* ==================================================
+   FAQ ACCORDION COMPONENT
+   ================================================== */
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll(".faq-item");
+  if (!faqItems.length) return;
+
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector(".faq-trigger");
+    if (!trigger) return;
+
+    trigger.addEventListener("click", () => {
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+
+      // Close other items for focused reading
+      faqItems.forEach((other) => {
+        if (other !== item) {
+          other.classList.remove("active");
+          const otherTrigger = other.querySelector(".faq-trigger");
+          if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Toggle current
+      if (isExpanded) {
+        item.classList.remove("active");
+        trigger.setAttribute("aria-expanded", "false");
+      } else {
+        item.classList.add("active");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
 }
 

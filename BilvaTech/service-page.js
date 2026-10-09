@@ -12,7 +12,7 @@ const servicePages = {
     capabilities:[["fa-border-all","Strong System Isolation","Create independent execution environments that help contain software faults and prevent unauthorized interference."],["fa-microchip","Resource Management","Control processor cores, memory, peripherals, interrupts and I/O resources for each workload."],["fa-code-branch","Mixed-Criticality Workloads","Support applications with different safety, security, timing and performance requirements on shared hardware."],["fa-clock","Deterministic Execution","Enable predictable allocation for real-time and time-sensitive applications."],["fa-right-left","Controlled Communication","Establish defined data paths between selected environments while preserving separation."],["fa-layer-group","Platform Consolidation","Bring multiple computing functions onto common hardware while retaining boundaries and control."]],
     architecture:{top:["Real-Time Application","Monitoring & Control","Guest OS / Workload"],core:"Separation Kernel Hypervisor",bottom:["CPU","Memory","I/O","Peripherals"],tags:["Strict isolation","Controlled access","Fault containment","Secure communication"]},
     industries:[["Aerospace","Avionics and flight-control partitioning"],["Defense","Separated mission and communication workloads"],["Automotive","Mixed-criticality platform consolidation"],["Industrial Automation","Control and monitoring isolation"],["Robotics","Safety-sensitive and analytical workloads"],["Transportation","Control and passenger-information systems"],["Embedded Systems","Advanced multi-environment platforms"]],
-    process:[["System Architecture","Define partitions, workloads and trust boundaries."],["Hardware Mapping","Allocate CPU, memory, I/O and peripherals."],["Software Integration","Integrate operating systems, applications and data flows."],["Configuration & Verification","Apply separation rules and validate predictable behaviour."],["Deployment Support","Support production embedded and mission-critical environments."]],
+    process:[["Discovery & Scoping","Identify partitions, trust requirements and platform constraints."],["System Architecture","Define partitions, workloads and trust boundaries."],["Hardware Mapping","Allocate CPU, memory, I/O and peripherals."],["Software Integration","Integrate operating systems, applications and data flows."],["Configuration & Verification","Apply separation rules and validate predictable behaviour."],["Deployment Support","Support production embedded and mission-critical environments."]],
     why:[["fa-microchip","Embedded security expertise","A low-level understanding of hardware, software and system boundaries."],["fa-shield-halved","Mission-critical understanding","Engineering decisions shaped around controlled, dependable operation."],["fa-diagram-project","End-to-end support","Support spanning architecture, integration, verification and deployment."]],
     cta:"Build secure systems on a controlled foundation.", ctaText:"Talk to Bilva Tech about Separation Kernel Hypervisor solutions for embedded, real-time and mission-critical platforms."
   },
@@ -69,133 +69,234 @@ const servicePages = {
   }
 };
 
-const key=document.body.dataset.service;const data=servicePages[key];
-const nav=[['kernel','Separation Kernel','separation-kernel-hypervisor.html'],['iot','IoT Solutions','iot-solutions.html'],['cyber','Cybersecurity','cybersecurity-solutions.html'],['consulting','Security Consulting','information-security-consulting.html']];
-if(data){
- document.documentElement.style.setProperty('--accent',data.color);document.documentElement.style.setProperty('--accent-rgb',data.accent);
+function initServicePage() {
+  try {
+    const key = document.body?.dataset?.service;
+    if (!key || !servicePages[key]) return;
+    const data = servicePages[key];
 
- // Build hamburger menu
- const subnavEl = document.querySelector('.solution-subnav');
- const menuItems = nav.map(([k,n,u], i) =>
-   `<a href="${u}" class="${k===key?'active':''}" ${k===key?'aria-current="page"':''}><span class="sol-num">0${i+1}</span>${n}</a>`
- ).join('');
- subnavEl.innerHTML = `
-   <button class="sol-hamburger" type="button" aria-label="Open solutions menu" aria-expanded="false">
-     <span></span><span></span><span></span>
-   </button>
-   <div class="sol-dropdown" role="menu">${menuItems}</div>
- `;
+    document.documentElement.style.setProperty('--accent', data.color);
+    document.documentElement.style.setProperty('--accent-rgb', data.accent);
 
- // Interaction logic
- const hamburger = subnavEl.querySelector('.sol-hamburger');
- const dropdown = subnavEl.querySelector('.sol-dropdown');
- const links = dropdown.querySelectorAll('a');
+    const nav = [
+      ['kernel', 'Separation Kernel', 'separation-kernel-hypervisor.html'],
+      ['iot', 'IoT Solutions', 'iot-solutions.html'],
+      ['cyber', 'Cybersecurity', 'cybersecurity-solutions.html'],
+      ['consulting', 'Security Consulting', 'information-security-consulting.html']
+    ];
 
- function openMenu() {
-   subnavEl.classList.add('is-open');
-   hamburger.setAttribute('aria-expanded', 'true');
- }
- function closeMenu() {
-   subnavEl.classList.remove('is-open');
-   hamburger.setAttribute('aria-expanded', 'false');
- }
+    // Build/Enhance subnav menu
+    const subnavEl = document.querySelector('.solution-subnav');
+    if (subnavEl) {
+      if (!subnavEl.querySelector('.sol-hamburger')) {
+        const menuItems = nav.map(([k, n, u], i) =>
+          `<a href="${u}" class="${k === key ? 'active' : ''}" ${k === key ? 'aria-current="page"' : ''} role="menuitem" tabindex="0"><span class="sol-num">0${i + 1}</span>${n}</a>`
+        ).join('');
+        subnavEl.innerHTML = `
+          <button class="sol-hamburger" type="button" aria-label="Open solutions menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="sol-dropdown" role="menu">${menuItems}</div>
+        `;
+      }
 
- // Click/tap toggle
- hamburger.addEventListener('click', (e) => {
-   e.stopPropagation();
-   subnavEl.classList.contains('is-open') ? closeMenu() : openMenu();
- });
+      const hamburger = subnavEl.querySelector('.sol-hamburger');
+      const dropdown = subnavEl.querySelector('.sol-dropdown');
+      const links = dropdown ? dropdown.querySelectorAll('a') : [];
 
- // Close on click outside
- document.addEventListener('click', (e) => {
-   if (!subnavEl.contains(e.target)) closeMenu();
- });
+      function openMenu() {
+        subnavEl.classList.add('is-open');
+        hamburger?.setAttribute('aria-expanded', 'true');
+      }
+      function closeMenu() {
+        subnavEl.classList.remove('is-open');
+        hamburger?.setAttribute('aria-expanded', 'false');
+      }
 
- // Keyboard: Escape closes, Enter on hamburger toggles
- document.addEventListener('keydown', (e) => {
-   if (e.key === 'Escape') closeMenu();
- });
+      if (hamburger) {
+        hamburger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          subnavEl.classList.contains('is-open') ? closeMenu() : openMenu();
+        });
+      }
 
- // Make dropdown links tabbable and handle Enter
- links.forEach(link => {
-   link.setAttribute('role', 'menuitem');
-   link.setAttribute('tabindex', '0');
- });
-
- // Open on focus within (keyboard nav)
- subnavEl.addEventListener('focusin', () => openMenu());
- subnavEl.addEventListener('focusout', (e) => {
-   if (!subnavEl.contains(e.relatedTarget)) closeMenu();
- });
- const cards=(items,klass,fn)=>items.map((x,i)=>fn(x,i)).join('');
-  document.querySelector('#service-content').innerHTML=`
-  <section class="service-hero"><div><p class="service-breadcrumb">Services / ${data.title}</p><h1>${data.title}</h1><h2>${data.headline}</h2><p class="service-hero-copy">${data.intro}</p><div class="service-actions"><a class="service-button primary" href="contact.html">Talk to an Expert <i class="fa-solid fa-arrow-right"></i></a><a class="service-button" href="#capabilities">Explore Capabilities</a></div><p class="service-note">${data.note}</p></div>${
-    key === 'kernel' 
-      ? `<div class="system-visual globe-container" style="padding:0; border:none; background:transparent; overflow:hidden;"><iframe src="globe.html" style="width: 100%; height: 100%; border: none; min-height: 600px;" title="Separation Kernel Architecture Visualization"></iframe></div>`
-      : key === 'cyber'
-      ? `<div class="system-visual globe-container" style="padding:0; border:none; background:transparent; overflow:hidden;"><iframe src="cybersecurity-visual.html" style="width: 100%; height: 100%; border: none; min-height: 600px;" title="Cybersecurity Lifecycle Architecture Visualization"></iframe></div>`
-      : key === 'iot'
-      ? `<div class="system-visual globe-container" style="padding:0; border:none; background:transparent; overflow:hidden;"><iframe src="iot-visual.html" style="width: 100%; height: 100%; border: none; min-height: 600px;" title="IoT Solutions Architecture Visualization"></iframe></div>`
-      : key === 'consulting'
-      ? `<div class="system-visual globe-container" style="padding:0; border:none; background:transparent; overflow:hidden;"><iframe src="consulting-visual.html" style="width: 100%; height: 100%; border: none; min-height: 600px;" title="Security Strategy Architecture Visualization"></iframe></div>`
-      : `<div class="system-visual" aria-label="Conceptual ${data.title} architecture"><div class="visual-top">${data.architecture.top.slice(0,4).map((n,i)=>`<div class="visual-node"><small>Domain 0${i+1}</small><strong>${n}</strong></div>`).join('')}</div><div class="visual-link"></div><div class="visual-core">${data.architecture.core}</div><div class="visual-hardware">${data.architecture.bottom.map(n=>`<span>${n}</span>`).join('')}</div><span class="pulse"></span></div>`
-  }</section>
-  <section class="value-strip" aria-label="Key benefits">${cards(data.values,'',x=>`<div class="value-item"><i class="fa-solid ${x[0]}"></i><strong>${x[1]}</strong><span>${x[2]}</span></div>`)}</section>
-  <section class="service-section overview-grid"><div class="overview-copy"><p class="section-label">Overview</p><h2 class="section-heading">${data.overviewTitle}</h2><p>${data.overview}</p><p class="highlight">${data.highlight}</p></div><aside class="enable-card"><h3>What it enables</h3><ul>${data.enables.map(x=>`<li>${x}</li>`).join('')}</ul></aside></section>
-  <section class="service-section" id="capabilities"><p class="section-label">Core capabilities</p><h2 class="section-heading">Control built into every layer.</h2><div class="capability-grid">${cards(data.capabilities,'',x=>`<article class="capability-card flip-card"><div class="flip-card-inner"><div class="flip-card-front"><span class="capability-icon"><i class="fa-solid ${x[0]}"></i></span><h3>${x[1]}</h3></div><div class="flip-card-back"><p>${x[2]}</p></div></div></article>`)}</div></section>
-  <section class="service-section"><p class="section-label">Use cases</p><h2 class="section-heading">Built for demanding environments.</h2><div class="usecase-grid">${cards(data.industries,'',(x,i)=>`<article class="usecase-card"><span>0${i+1}</span><h3>${x[0]}</h3><p>${x[1]}</p></article>`)}</div></section>
-  <section class="service-section"><p class="section-label">Delivery</p><h2 class="section-heading">From discovery to deployment.</h2><div class="industry-grid">${cards(data.process,'',(x,i)=>`<article class="industry-card"><span>0${i+1}</span><h3>${x[0]}</h3><p>${x[1]}</p></article>`)}</div></section>
-  <section class="service-section"><p class="section-label">Why Bilva Tech</p><h2 class="section-heading">Technical thinking. Practical delivery.</h2><div class="why-grid">${cards(data.why,'',x=>`<article class="why-card"><i class="fa-solid ${x[0]}"></i><h3>${x[1]}</h3><p>${x[2]}</p></article>`)}</div></section>
-  <section class="service-cta"><h2>${data.cta}</h2><p>${data.ctaText}</p><a class="service-button primary" href="contact.html">Discuss Your Requirement <i class="fa-solid fa-arrow-right"></i></a></section>`;
-
-  if ("IntersectionObserver" in window) {
-    const processObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-process');
-          observer.unobserve(entry.target);
-        }
+      document.addEventListener('click', (e) => {
+        if (!subnavEl.contains(e.target)) closeMenu();
       });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.process-step').forEach(step => {
-      processObserver.observe(step);
-    });
 
-    const timelineObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-timeline');
-          observer.unobserve(entry.target);
-        }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
       });
-    }, { threshold: 0.15 });
 
-    document.querySelectorAll('.industry-card').forEach(card => {
-      timelineObserver.observe(card);
-    });
-
-    const whyObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-why');
-          observer.unobserve(entry.target);
-        }
+      links.forEach(link => {
+        link.setAttribute('role', 'menuitem');
+        link.setAttribute('tabindex', '0');
       });
-    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.why-card').forEach(card => {
-      whyObserver.observe(card);
-    });
-  } else {
-    document.querySelectorAll('.process-step').forEach(step => {
-      step.classList.add('animate-process');
-    });
-    document.querySelectorAll('.industry-card').forEach(card => {
-      card.classList.add('animate-timeline');
-    });
-    document.querySelectorAll('.why-card').forEach(card => {
-      card.classList.add('animate-why');
-    });
+      subnavEl.addEventListener('focusin', () => openMenu());
+      subnavEl.addEventListener('focusout', (e) => {
+        if (!subnavEl.contains(e.relatedTarget)) closeMenu();
+      });
+    }
+
+    // Fallback dynamic renderer in case page had empty container
+    const contentContainer = document.querySelector('#service-content');
+    if (contentContainer && contentContainer.children.length === 0) {
+      const cards = (items, klass, fn) => items.map((x, i) => fn(x, i)).join('');
+      contentContainer.innerHTML = `
+      <section class="service-hero"><div><p class="service-breadcrumb">Services / ${data.title}</p><h1>${data.title}</h1><h2>${data.headline}</h2><p class="service-hero-copy">${data.intro}</p><div class="service-actions"><a class="service-button primary" href="contact.html">Talk to an Expert <i class="fa-solid fa-arrow-right"></i></a><a class="service-button" href="#capabilities">Explore Capabilities</a></div><p class="service-note">${data.note}</p></div>${
+        key === 'kernel' 
+          ? `<div class="system-visual globe-container" style="padding:0; border:none; background:transparent; overflow:hidden;"><iframe src="globe.html" style="width: 100%; height: 100%; border: none; min-height: 600px;" title="Separation Kernel Architecture Visualization"></iframe></div>`
+          : key === 'cyber'
+          ? `<div class="system-visual globe-container" style="padding:0; border:none; background:transparent; overflow:hidden;"><iframe src="cybersecurity-visual.html" style="width: 100%; height: 100%; border: none; min-height: 600px;" title="Cybersecurity Lifecycle Architecture Visualization"></iframe></div>`
+          : key === 'iot'
+          ? `<div class="system-visual globe-container" style="padding:0; border:none; background:transparent; overflow:hidden;"><iframe src="iot-visual.html" style="width: 100%; height: 100%; border: none; min-height: 600px;" title="IoT Solutions Architecture Visualization"></iframe></div>`
+          : key === 'consulting'
+          ? `<div class="system-visual globe-container" style="padding:0; border:none; background:transparent; overflow:hidden;"><iframe src="consulting-visual.html" style="width: 100%; height: 100%; border: none; min-height: 600px;" title="Security Strategy Architecture Visualization"></iframe></div>`
+          : `<div class="system-visual" aria-label="Conceptual ${data.title} architecture"><div class="visual-top">${data.architecture.top.slice(0,4).map((n,i)=>`<div class="visual-node"><small>Domain 0${i+1}</small><strong>${n}</strong></div>`).join('')}</div><div class="visual-link"></div><div class="visual-core">${data.architecture.core}</div><div class="visual-hardware">${data.architecture.bottom.map(n=>`<span>${n}</span>`).join('')}</div><span class="pulse"></span></div>`
+      }</section>
+      <section class="value-strip" aria-label="Key benefits">${cards(data.values,'',x=>`<div class="value-item"><i class="fa-solid ${x[0]}"></i><strong>${x[1]}</strong><span>${x[2]}</span></div>`)}</section>
+      <section class="service-section overview-grid"><div class="overview-copy"><p class="section-label">Overview</p><h2 class="section-heading">${data.overviewTitle}</h2><p>${data.overview}</p><p class="highlight">${data.highlight}</p></div><aside class="enable-card"><h3>What it enables</h3><ul>${data.enables.map(x=>`<li>${x}</li>`).join('')}</ul></aside></section>
+      <section class="service-section" id="capabilities"><p class="section-label">Core capabilities</p><h2 class="section-heading">Control built into every layer.</h2><div class="capability-grid">${cards(data.capabilities,'',x=>`<article class="capability-card flip-card"><div class="flip-card-inner"><div class="flip-card-front"><span class="capability-icon"><i class="fa-solid ${x[0]}"></i></span><h3>${x[1]}</h3></div><div class="flip-card-back"><p>${x[2]}</p></div></div></article>`)}</div></section>
+      <section class="service-section"><p class="section-label">Use cases</p><h2 class="section-heading">Built for demanding environments.</h2><div class="usecase-grid">${cards(data.industries,'',(x,i)=>`<article class="usecase-card"><span>0${i+1}</span><h3>${x[0]}</h3><p>${x[1]}</p></article>`)}</div></section>
+      <section class="service-section delivery-section" id="delivery"><p class="section-label">Delivery</p><h2 class="section-heading">From discovery to deployment.</h2><div class="circuit-board" style="--total-steps: ${data.process.length};"><div class="circuit-grid-pattern" aria-hidden="true"></div><div class="circuit-track" aria-hidden="true"><div class="circuit-wire"></div><div class="circuit-wire-active" id="circuit-wire-active"></div><div class="circuit-signal" id="circuit-signal"></div></div><div class="circuit-milestones" role="list">${data.process.map((step, idx) => `<article class="circuit-milestone ${idx === 0 ? 'is-active' : ''}" data-step="${idx}" role="listitem" tabindex="0" aria-label="Milestone 0${idx + 1}: ${step[0]}"><div class="circuit-node-wrap"><div class="circuit-pad"><span class="circuit-solder-ring"></span><span class="circuit-node-number">0${idx + 1}</span></div><div class="circuit-lead-line" aria-hidden="true"></div></div><div class="circuit-card"><div class="circuit-card-header"><span class="circuit-tag">STAGE 0${idx + 1}</span><span class="circuit-status-dot" aria-hidden="true"></span></div><h3 class="circuit-title">${step[0]}</h3><p class="circuit-desc">${step[1]}</p></div></article>`).join('')}</div></div></section>
+      <section class="service-section"><p class="section-label">Why Bilva Tech</p><h2 class="section-heading">Technical thinking. Practical delivery.</h2><div class="why-grid">${cards(data.why,'',x=>`<article class="why-card"><i class="fa-solid ${x[0]}"></i><h3>${x[1]}</h3><p>${x[2]}</p></article>`)}</div></section>
+      <section class="service-cta"><h2>${data.cta}</h2><p>${data.ctaText}</p><a class="service-button primary" href="contact.html">Discuss Your Requirement <i class="fa-solid fa-arrow-right"></i></a></section>`;
+    }
+
+    // Circuit Timeline Functionality
+    function initCircuitTimeline() {
+      const timelineEl = document.querySelector('.circuit-board');
+      if (!timelineEl) return;
+
+      const milestones = Array.from(timelineEl.querySelectorAll('.circuit-milestone'));
+      const activeWire = document.getElementById('circuit-wire-active');
+      const count = milestones.length;
+      if (!count) return;
+
+      let currentActive = 0;
+
+      function setActive(idx) {
+        if (idx < 0) idx = 0;
+        if (idx >= count) idx = count - 1;
+        currentActive = idx;
+        milestones.forEach((m, i) => {
+          if (i === idx) {
+            m.classList.add('is-active');
+            m.setAttribute('aria-current', 'step');
+          } else {
+            m.classList.remove('is-active');
+            m.removeAttribute('aria-current');
+          }
+          if (i < idx) {
+            m.classList.add('is-completed');
+          } else {
+            m.classList.remove('is-completed');
+          }
+        });
+
+        if (activeWire) {
+          const isMobile = window.innerWidth <= 850;
+          const pct = count > 1 ? (idx / (count - 1)) * 100 : 0;
+          if (isMobile) {
+            activeWire.style.height = `${pct}%`;
+            activeWire.style.width = '2px';
+          } else {
+            activeWire.style.width = `${pct}%`;
+            activeWire.style.height = '2px';
+          }
+        }
+      }
+
+      milestones.forEach((m, idx) => {
+        m.addEventListener('click', () => setActive(idx));
+        m.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setActive(idx);
+          }
+        });
+      });
+
+      let ticking = false;
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const rect = timelineEl.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const isMobile = window.innerWidth <= 850;
+
+            if (isMobile) {
+              let closestIdx = 0;
+              let minDistance = Infinity;
+              const targetY = viewportHeight * 0.45;
+
+              milestones.forEach((m, i) => {
+                const mRect = m.getBoundingClientRect();
+                const center = mRect.top + mRect.height / 2;
+                const dist = Math.abs(center - targetY);
+                if (dist < minDistance) {
+                  minDistance = dist;
+                  closestIdx = i;
+                }
+              });
+              setActive(closestIdx);
+            } else {
+              const start = viewportHeight * 0.75;
+              const end = viewportHeight * 0.25;
+              const totalDistance = rect.height + (start - end);
+              const currentPos = start - rect.top;
+              const progress = Math.min(1, Math.max(0, currentPos / totalDistance));
+              const targetIdx = Math.min(count - 1, Math.floor(progress * count));
+              
+              if (rect.top <= start && rect.bottom >= end) {
+                setActive(targetIdx);
+              }
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => {
+        setActive(currentActive);
+        onScroll();
+      }, { passive: true });
+
+      setActive(0);
+      onScroll();
+    }
+
+    initCircuitTimeline();
+
+    // Intersection observers
+    if ("IntersectionObserver" in window) {
+      const whyObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-why');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.why-card').forEach(card => {
+        whyObserver.observe(card);
+      });
+    } else {
+      document.querySelectorAll('.why-card').forEach(card => {
+        card.classList.add('animate-why');
+      });
+    }
+  } catch (err) {
+    console.error("Error in service-page.js initialization:", err);
   }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initServicePage);
+} else {
+  initServicePage();
 }

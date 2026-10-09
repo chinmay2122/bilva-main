@@ -3,6 +3,7 @@ const contentTypes = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".webp": "image/webp",
+  ".jpg": "image/jpeg",
   ".woff2": "font/woff2",
 };
 
@@ -21,7 +22,7 @@ export default {
     const extension = pathname.slice(pathname.lastIndexOf("."));
     return new Response(Uint8Array.from(atob(asset), (character) => character.charCodeAt(0)), {
       headers: {
-        "Cache-Control": pathname === "/index.html" ? "no-cache" : "public, max-age=31536000, immutable",
+        "Cache-Control": extension === ".html" ? "no-cache" : "public, max-age=31536000, immutable",
         "Content-Type": contentTypes[extension] || "application/octet-stream",
       },
     });

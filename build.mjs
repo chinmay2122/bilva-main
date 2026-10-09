@@ -2,6 +2,14 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const assets = [
   "index.html",
+  "trialhomepage.html",
+  "trialhomepage.css",
+  "trialhomepage.js",
+  "homepage.html",
+  "homepage-original.html",
+  "cto-homepage.css",
+  "cto-homepage.js",
+  "cto-globe.js",
   "solutions.html",
   "about.html",
   "contact.html",
@@ -14,11 +22,23 @@ const assets = [
   "information-security-consulting.html",
   "consulting-visual.html",
   "styles.css",
+  "homepage.css",
+  "testimonials.css",
   "service-page.css",
+  "unified-theme.css",
+  "inner-pages.css",
+  "inner-pages.js",
+  "bento-polish.css",
+  "bento-polish.js",
   "main.js",
+  "service-dial.js",
   "why-globe.js",
+  "architecture.js",
+  "testimonials.js",
+  "testimonials-data.js",
   "service-page.js",
   "assets/logo.webp",
+  "assets/cta-texture.jpg",
 ];
 
 const encodedAssets = {};
