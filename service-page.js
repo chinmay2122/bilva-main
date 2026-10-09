@@ -144,6 +144,7 @@ if(data){
   <section class="service-section overview-grid"><div class="overview-copy"><p class="section-label">Overview</p><h2 class="section-heading">${data.overviewTitle}</h2><p>${data.overview}</p><p class="highlight">${data.highlight}</p></div><aside class="enable-card"><h3>What it enables</h3><ul>${data.enables.map(x=>`<li>${x}</li>`).join('')}</ul></aside></section>
   <section class="service-section" id="capabilities"><p class="section-label">Core capabilities</p><h2 class="section-heading">Control built into every layer.</h2><div class="capability-grid">${cards(data.capabilities,'',x=>`<article class="capability-card flip-card"><div class="flip-card-inner"><div class="flip-card-front"><span class="capability-icon"><i class="fa-solid ${x[0]}"></i></span><h3>${x[1]}</h3></div><div class="flip-card-back"><p>${x[2]}</p></div></div></article>`)}</div></section>
   <section class="service-section"><p class="section-label">Use cases</p><h2 class="section-heading">Built for demanding environments.</h2><div class="usecase-grid">${cards(data.industries,'',(x,i)=>`<article class="usecase-card"><span>0${i+1}</span><h3>${x[0]}</h3><p>${x[1]}</p></article>`)}</div></section>
+<<<<<<< HEAD
   <section class="service-section delivery-section" id="delivery"><p class="section-label">Delivery</p><h2 class="section-heading">From discovery to deployment.</h2><div class="circuit-board" style="--total-steps: ${data.process.length};"><div class="circuit-grid-pattern" aria-hidden="true"></div><div class="circuit-track" aria-hidden="true"><div class="circuit-wire"></div><div class="circuit-wire-active" id="circuit-wire-active"></div><div class="circuit-signal" id="circuit-signal"></div></div><div class="circuit-milestones" role="list">${data.process.map((step, idx) => `<article class="circuit-milestone ${idx === 0 ? 'is-active' : ''}" data-step="${idx}" role="listitem" tabindex="0" aria-label="Milestone 0${idx + 1}: ${step[0]}"><div class="circuit-node-wrap"><div class="circuit-pad"><span class="circuit-solder-ring"></span><span class="circuit-node-number">0${idx + 1}</span></div><div class="circuit-lead-line" aria-hidden="true"></div></div><div class="circuit-card"><div class="circuit-card-header"><span class="circuit-tag">STAGE 0${idx + 1}</span><span class="circuit-status-dot" aria-hidden="true"></span></div><h3 class="circuit-title">${step[0]}</h3><p class="circuit-desc">${step[1]}</p></div></article>`).join('')}</div></div></section>
   <section class="service-section"><p class="section-label">Why Bilva Tech</p><h2 class="section-heading">Technical thinking. Practical delivery.</h2><div class="why-grid">${cards(data.why,'',x=>`<article class="why-card"><i class="fa-solid ${x[0]}"></i><h3>${x[1]}</h3><p>${x[2]}</p></article>`)}</div></section>
   <section class="service-cta"><h2>${data.cta}</h2><p>${data.ctaText}</p><a class="service-button primary" href="contact.html">Discuss Your Requirement <i class="fa-solid fa-arrow-right"></i></a></section>`;
@@ -256,6 +257,39 @@ if(data){
   initCircuitTimeline();
 
   if ("IntersectionObserver" in window) {
+=======
+  <section class="service-section"><p class="section-label">Delivery</p><h2 class="section-heading">From discovery to deployment.</h2><div class="industry-grid">${cards(data.process,'',(x,i)=>`<article class="industry-card"><span>0${i+1}</span><h3>${x[0]}</h3><p>${x[1]}</p></article>`)}</div></section>
+  <section class="service-section"><p class="section-label">Why Bilva Tech</p><h2 class="section-heading">Technical thinking. Practical delivery.</h2><div class="why-grid">${cards(data.why,'',x=>`<article class="why-card"><i class="fa-solid ${x[0]}"></i><h3>${x[1]}</h3><p>${x[2]}</p></article>`)}</div></section>
+  <section class="service-cta"><h2>${data.cta}</h2><p>${data.ctaText}</p><a class="service-button primary" href="contact.html">Discuss Your Requirement <i class="fa-solid fa-arrow-right"></i></a></section>`;
+
+  if ("IntersectionObserver" in window) {
+    const processObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-process');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.process-step').forEach(step => {
+      processObserver.observe(step);
+    });
+
+    const timelineObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-timeline');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.industry-card').forEach(card => {
+      timelineObserver.observe(card);
+    });
+
+>>>>>>> 3be3e35 (Update BilvaTech website)
     const whyObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -269,6 +303,15 @@ if(data){
       whyObserver.observe(card);
     });
   } else {
+<<<<<<< HEAD
+=======
+    document.querySelectorAll('.process-step').forEach(step => {
+      step.classList.add('animate-process');
+    });
+    document.querySelectorAll('.industry-card').forEach(card => {
+      card.classList.add('animate-timeline');
+    });
+>>>>>>> 3be3e35 (Update BilvaTech website)
     document.querySelectorAll('.why-card').forEach(card => {
       card.classList.add('animate-why');
     });
