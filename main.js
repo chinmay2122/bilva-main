@@ -116,11 +116,14 @@ if (globalFooter) {
     </div>
     <div class="footer-bottom">
       <button class="back-to-top" type="button">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-      <form class="footer-signup"><label for="footer-email">Security insights, without the noise.</label><div><input id="footer-email" type="email" autocomplete="email" placeholder="Business email" aria-label="Business email"><button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div><p role="status" aria-live="polite"></p></form>
+      <div class="footer-signup">
+        <label>Security insights, without the noise.</label>
+        <div id="footer-curved-input-root"></div>
+        <p class="footer-signup-status" role="status" aria-live="polite"></p>
+      </div>
       <div class="footer-contact"><a href="contact.html">Contact Bilva Tech</a><small>© 2026 Bilva Tech Business Solutions</small></div>
     </div>`;
   globalFooter.querySelector(".back-to-top")?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
-  globalFooter.querySelector(".footer-signup")?.addEventListener("submit", (event) => { event.preventDefault(); event.currentTarget.querySelector("p").textContent = "Thank you. Subscription delivery can be connected before launch."; });
 }
 
 /* ==================================================

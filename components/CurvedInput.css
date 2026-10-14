@@ -1,0 +1,74 @@
+.curved-input {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.curved-input__svg {
+  display: block;
+  overflow: visible;
+  width: 100%;
+  height: auto;
+  cursor: text;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.curved-input__svg text {
+  font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.curved-input__ring {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.curved-input--focused .curved-input__ring {
+  opacity: 0.28;
+}
+
+.curved-input__button {
+  cursor: pointer;
+  outline: none;
+}
+
+.curved-input__button-bg {
+  transition:
+    filter 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.curved-input__button:hover .curved-input__button-bg {
+  filter: brightness(0.92);
+}
+
+.curved-input__button:active .curved-input__button-bg {
+  filter: brightness(0.85);
+}
+
+.curved-input__button:focus-visible .curved-input__button-bg {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+}
+
+.curved-input__field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  font-size: 16px;
+  pointer-events: none;
+  outline: none;
+}

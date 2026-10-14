@@ -24,12 +24,17 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="components/CurvedInput.css" />
 
     <script type="importmap">
       {
         "imports": {
           "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+          "react": "https://esm.sh/react@19",
+          "react-dom/client": "https://esm.sh/react-dom@19/client",
+          "./CurvedInput": "./components/CurvedInput.js",
+          "./components/CurvedInput": "./components/CurvedInput.js"
         }
       }
     </script>
@@ -376,12 +381,6 @@
         <div class="why-content">
           <p class="why-eyebrow">Why Bilva Tech</p>
           <h2 class="why-heading">Security built around your environment.</h2>
-          <p class="why-copy">
-            We don't apply the same security model to every system.
-            We understand the technology environment, security requirements
-            and risk exposure first — then engineer security around the
-            specific needs of the system.
-          </p>
 
           <div class="why-principles" role="list">
             <article class="why-principle" data-principle="0" role="listitem" tabindex="0">
@@ -657,6 +656,7 @@
 
     <footer class="site-footer"></footer>
     <script src="main.js"></script>
+    <script type="module" src="footer-mount.js"></script>
     <script type="module" src="why-globe.js"></script>
   </body>
 </html>
