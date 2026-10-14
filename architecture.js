@@ -248,5 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Initialize
+  if (viewToggle) {
+    viewToggle.innerHTML = isExploded ? '<span class="icon">⬍</span> COMPACT VIEW' : '<span class="icon">⬍</span> EXPLODE VIEW';
+  }
   renderArchitecture('kernel');
 });

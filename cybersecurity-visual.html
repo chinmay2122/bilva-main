@@ -86,20 +86,11 @@
     .cs-label.is-active {
       opacity: 1;
       color: #ffffff;
-      border-color: rgba(85, 216, 255, 0.6);
-      border-left-color: #55d8ff;
+      border-color: rgba(120, 147, 255, 0.6);
+      border-left-color: #7893ff;
       background: rgba(16, 24, 38, 0.94);
-      box-shadow: 0 0 18px rgba(85, 216, 255, 0.4);
+      box-shadow: 0 0 18px rgba(120, 147, 255, 0.4);
       transform: translate(-50%, -50%) scale(1.05);
-    }
-
-    /* Vulnerability Management special highlight */
-    .cs-label#lbl-vulnerability.is-active {
-      border-color: rgba(255, 50, 50, 0.6);
-      border-left-color: #ff2222;
-      background: rgba(30, 12, 14, 0.96);
-      box-shadow: 0 0 22px rgba(255, 34, 34, 0.6);
-      text-shadow: 0 0 8px rgba(255, 34, 34, 0.7);
     }
 
     .cs-label.is-dimmed {
@@ -124,14 +115,14 @@
     
     <!-- UI Labels Layer -->
     <div id="cs-labels-container">
-      <div class="cs-label" id="lbl-architecture" data-stage="0">SECURE ARCHITECTURE</div>
-      <div class="cs-label" id="lbl-boot" data-stage="1">SECURE BOOT</div>
-      <div class="cs-label" id="lbl-auth" data-stage="2">AUTHENTICATION</div>
-      <div class="cs-label" id="lbl-data" data-stage="3">DATA PROTECTION</div>
-      <div class="cs-label" id="lbl-operation" data-stage="4">SECURE OPERATION</div>
-      <div class="cs-label" id="lbl-monitoring" data-stage="5">MONITORING</div>
-      <div class="cs-label" id="lbl-update" data-stage="6">SECURE UPDATE</div>
-      <div class="cs-label" id="lbl-vulnerability" data-stage="7">VULNERABILITY MANAGEMENT</div>
+      <div class="cs-label" id="lbl-printer" data-stage="0">PRINTER CONNECT</div>
+      <div class="cs-label" id="lbl-qr" data-stage="1">DYNAMIC QR</div>
+      <div class="cs-label" id="lbl-pattern" data-stage="2">SECURE PATTERN</div>
+      <div class="cs-label" id="lbl-auto" data-stage="3">AUTO MODE</div>
+      <div class="cs-label" id="lbl-api" data-stage="4">API ENDPOINT</div>
+      <div class="cs-label" id="lbl-csv" data-stage="5">CSV IMPORT</div>
+      <div class="cs-label" id="lbl-config" data-stage="6">JOB CONFIG</div>
+      <div class="cs-label" id="lbl-mis" data-stage="7">MIS REPORTING</div>
     </div>
 
   </div>
@@ -170,10 +161,10 @@
       const matNode = new THREE.MeshStandardMaterial({ color: 0xcccccc, metalness: 0.5, roughness: 0.2 });
       const matWireframe = new THREE.LineBasicMaterial({ color: 0x485060, transparent: true, opacity: 0.35 });
       const matPathNormal = new THREE.LineBasicMaterial({ color: 0x3d4452, transparent: true, opacity: 0.25 });
-      const matPathActive = new THREE.LineBasicMaterial({ color: 0x55d8ff, transparent: true, opacity: 0.85 });
-      const matPathAlert = new THREE.LineBasicMaterial({ color: 0xff3333, transparent: true, opacity: 0.9 });
+      const matPathActive = new THREE.LineBasicMaterial({ color: 0x7893ff, transparent: true, opacity: 0.85 });
+      const matPathAlert = new THREE.LineBasicMaterial({ color: 0x7893ff, transparent: true, opacity: 0.9 });
 
-      // --- 1. SYSTEM CORE (Protected Platform) ---
+      // --- 1. SYSTEM CORE (Secure QR Engine) ---
       const coreGroup = new THREE.Group();
       masterGroup.add(coreGroup);
 
@@ -210,14 +201,14 @@
 
       // --- 3. LIFECYCLE STAGES (Orbiting 3D Nodes) ---
       const stages = [
-        { name: "SECURE ARCHITECTURE", angle: 0 },
-        { name: "SECURE BOOT", angle: Math.PI * 0.25 },
-        { name: "AUTHENTICATION", angle: Math.PI * 0.5 },
-        { name: "DATA PROTECTION", angle: Math.PI * 0.75 },
-        { name: "SECURE OPERATION", angle: Math.PI },
-        { name: "MONITORING", angle: Math.PI * 1.25 },
-        { name: "SECURE UPDATE", angle: Math.PI * 1.5 },
-        { name: "VULNERABILITY MANAGEMENT", angle: Math.PI * 1.75 }
+        { name: "PRINTER CONNECT", angle: 0 },
+        { name: "DYNAMIC QR", angle: Math.PI * 0.25 },
+        { name: "SECURE PATTERN", angle: Math.PI * 0.5 },
+        { name: "AUTO MODE", angle: Math.PI * 0.75 },
+        { name: "API ENDPOINT", angle: Math.PI },
+        { name: "CSV IMPORT", angle: Math.PI * 1.25 },
+        { name: "JOB CONFIG", angle: Math.PI * 1.5 },
+        { name: "MIS REPORTING", angle: Math.PI * 1.75 }
       ];
 
       const orbitRadius = 4.8;
@@ -511,7 +502,7 @@
           const isActiveState = activeLifecycleStage === i;
           
           sn.mesh.scale.setScalar(isHovered || isActiveState ? 1.35 : 1.0);
-          sn.mesh.material.color.lerp(new THREE.Color(isHovered || isActiveState ? 0x55d8ff : 0xcccccc), 0.12);
+          sn.mesh.material.color.lerp(new THREE.Color(isHovered || isActiveState ? 0x7893ff : 0xcccccc), 0.12);
         });
 
         spokeLines.forEach(sp => {
@@ -519,17 +510,18 @@
           const isActiveState = activeLifecycleStage === sp.index;
           
           if (isHovered || isActiveState) {
-            sp.line.material = sp.index === 7 ? matPathAlert : matPathActive;
+            sp.line.material = matPathActive;
           } else {
             sp.line.material = matPathNormal;
           }
         });
 
-        // Vulnerability Management Simulation (Stage 7 Alert Pulse)
+        // MIS Reporting Pulse
         if (activeLifecycleStage === 7 || hoveredStage === 7) {
-          const alertPulse = (Math.sin(time * 6) + 1) / 2;
+          const pulse = (Math.sin(time * 6) + 1) / 2;
+          alertLight.color.setHex(0x7893ff);
           alertLight.position.copy(stageNodes[7].group.position);
-          alertLight.intensity = alertPulse * 3;
+          alertLight.intensity = pulse * 2.5;
         } else {
           alertLight.intensity = 0;
         }

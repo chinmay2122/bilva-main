@@ -64,12 +64,25 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
   // --- 3. Country Outlines (Wireframe GeoJSON) ---
   let bordersMesh = null;
+  const hideLoader = () => {
+    if (loader) {
+      loader.style.opacity = '0';
+      loader.style.pointerEvents = 'none';
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 400);
+    }
+  };
+
+  const loadTimeout = setTimeout(hideLoader, 1500);
+
   fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
     .then(response => {
       if (!response.ok) throw new Error('Network error');
       return response.json();
     })
     .then(data => {
+      clearTimeout(loadTimeout);
       const points = [];
       function processRing(ring) {
         for (let i = 0; i < ring.length - 1; i++) {
@@ -91,11 +104,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
       const bordersMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
       bordersMesh = new THREE.LineSegments(bordersGeo, bordersMat);
       globeGroup.add(bordersMesh);
-      if (loader) loader.style.opacity = '0';
+      hideLoader();
     })
     .catch(() => {
-      // Fallback if offline: hide loader and preserve wireframe globe
-      if (loader) loader.style.opacity = '0';
+      clearTimeout(loadTimeout);
+      hideLoader();
     });
 
   // --- 4. Abstract Technical Network Points (No City Names) ---

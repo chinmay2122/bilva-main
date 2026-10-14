@@ -93,8 +93,16 @@ const contactForm = document.querySelector("#contact-form");
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
     const status = contactForm.querySelector(".form-status");
-    status.textContent = "Your request is prepared. Form delivery can be connected to Bilva Tech’s preferred inbox before launch.";
+    if (status) {
+      status.classList.remove("error");
+      status.classList.add("success");
+      status.textContent = "Your request is prepared. Form delivery can be connected to Bilva Tech’s preferred inbox before launch.";
+    }
   });
 }
 
@@ -116,214 +124,76 @@ if (globalFooter) {
 }
 
 /* ==================================================
-   ORBIT CARD STACK COMPONENT
+   OUR SOLUTIONS — DISCLOSURE CARDS
    ================================================== */
-function initOrbitCardStack() {
-  const container = document.getElementById("orbit-stack-root");
-  if (!container) return;
+function initSolutionDisclosureCards() {
+  const grid = document.getElementById("solutions-grid");
+  if (!grid) return;
 
-  const stage = document.getElementById("orbit-stage");
-  const cards = Array.from(container.querySelectorAll(".orbit-card"));
+  const cards = grid.querySelectorAll(".solution-disclosure-card");
   if (!cards.length) return;
 
-  const dots = Array.from(container.querySelectorAll(".orbit-dot"));
-  const prevBtn = document.getElementById("orbit-prev");
-  const nextBtn = document.getElementById("orbit-next");
-  const hudNum = document.getElementById("orbit-active-num");
-  const hudTitle = document.getElementById("orbit-active-title");
-  const hudLink = document.getElementById("orbit-active-link");
+  cards.forEach((card) => {
+    const trigger = card.querySelector(".disclosure-trigger");
+    if (!trigger) return;
 
-  const total = cards.length;
-  const midpoint = (total - 1) / 2;
-  const restingIndex = 1;
-  let activeIndex = restingIndex;
-  let isOpen = false;
+    const toggle = () => {
+      const isExpanded = card.classList.contains("is-expanded");
+      const nextState = !isExpanded;
 
-  const inRange = (idx) => Math.min(Math.max(0, idx), total - 1);
+      card.classList.toggle("is-expanded", nextState);
+      trigger.setAttribute("aria-expanded", String(nextState));
+    };
 
-  function getDimensions() {
-    const w = window.innerWidth;
-    if (w < 480) return { spread: 36, lift: 20, rotationMult: 5.2 };
-    if (w < 768) return { spread: 64, lift: 26, rotationMult: 6.8 };
-    if (w < 1100) return { spread: 125, lift: 34, rotationMult: 7.8 };
-    return { spread: 168, lift: 38, rotationMult: 8.5 };
-  }
-
-  function updateHUD(idx) {
-    const card = cards[idx];
-    if (!card) return;
-    const num = card.dataset.num || `0${idx + 1}`;
-    const name = card.dataset.name || "";
-    const url = card.dataset.url || "#";
-
-    if (hudNum) hudNum.textContent = num;
-    if (hudTitle) hudTitle.textContent = name;
-    if (hudLink) {
-      hudLink.href = url;
-      hudLink.setAttribute("aria-label", `Explore ${name}`);
-    }
-
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === idx);
-    });
-  }
-
-  function render() {
-    const { spread, lift, rotationMult } = getDimensions();
-
-    cards.forEach((card, index) => {
-      const orbit = index - midpoint;
-      const stack = index - restingIndex;
-
-      let x, y, rotation;
-      if (isOpen) {
-        x = orbit * spread;
-        y = Math.abs(orbit) * 28 + Math.max(0, Math.abs(orbit) - 1) * 8;
-        rotation = orbit * rotationMult;
-      } else {
-        x = stack * 10;
-        y = Math.abs(stack) * 5;
-        rotation = stack * 2.8;
-      }
-
-      const isActive = index === activeIndex;
-      const zIndex = isActive ? 80 : 50 - Math.abs(index - activeIndex);
-      const activeLift = (isOpen && isActive) ? lift : 0;
-      const scale = isOpen ? 0.985 : 0.97;
-
-      card.style.zIndex = zIndex;
-      card.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y - activeLift}px)) rotate(${rotation}deg) scale(${scale})`;
-      card.classList.toggle("is-active", isActive);
-      card.setAttribute("aria-current", isActive ? "true" : "false");
+    // Primary click on designated trigger button
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggle();
     });
 
-    updateHUD(activeIndex);
-  }
-
-  function activate(index, userNav = false) {
-    const next = inRange(index);
-    const wasActive = (activeIndex === next && isOpen);
-    isOpen = true;
-    activeIndex = next;
-    render();
-
-    if (userNav && wasActive) {
-      const url = cards[next]?.dataset.url;
-      if (url) window.location.href = url;
-    }
-  }
-
-  function close() {
-    isOpen = false;
-    activeIndex = restingIndex;
-    render();
-  }
-
-  // Hover on stage
-  stage.addEventListener("mouseenter", () => {
-    isOpen = true;
-    render();
-  });
-
-  stage.addEventListener("mouseleave", () => {
-    close();
-  });
-
-  // Card interactions
-  cards.forEach((card, index) => {
-    card.addEventListener("mouseenter", () => {
-      activate(index);
-    });
-
-    card.addEventListener("focus", () => {
-      activate(index);
-    });
-
+    // Clicking anywhere on the card area (except See More link) also toggles
     card.addEventListener("click", (e) => {
-      if (e.target.closest(".orbit-arrow") || e.target.closest(".orbit-cta-link")) {
+      if (e.target.closest(".disclosure-link")) {
+        // Let the link navigate normally
         return;
       }
-      if (activeIndex === index && isOpen) {
-        window.location.href = card.dataset.url;
-      } else {
-        activate(index, true);
-      }
-    });
-
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-        e.preventDefault();
-        const next = (index + 1) % total;
-        activate(next);
-        cards[next]?.focus();
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        e.preventDefault();
-        const prev = (index - 1 + total) % total;
-        activate(prev);
-        cards[prev]?.focus();
-      } else if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        window.location.href = card.dataset.url;
-      } else if (e.key === "Escape") {
-        card.blur();
-        close();
-      }
+      toggle();
     });
   });
+}
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      const prev = (activeIndex - 1 + total) % total;
-      activate(prev);
-    });
-  }
+/* ==================================================
+   FAQ ACCORDION COMPONENT
+   ================================================== */
+function initFaqAccordion() {
+  const faqSection = document.getElementById("faq");
+  if (!faqSection) return;
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      const next = (activeIndex + 1) % total;
-      activate(next);
-    });
-  }
+  const items = faqSection.querySelectorAll(".faq-item");
+  if (!items.length) return;
 
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      const idx = Number(dot.dataset.index);
-      activate(idx);
+  items.forEach((item) => {
+    const trigger = item.querySelector(".faq-trigger");
+    if (!trigger) return;
+
+    trigger.addEventListener("click", () => {
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+      const nextState = !isExpanded;
+
+      trigger.setAttribute("aria-expanded", String(nextState));
+      item.classList.toggle("is-open", nextState);
     });
   });
+}
 
-  window.addEventListener("resize", () => {
-    render();
-  });
-
-  let touchStartX = 0;
-  stage.addEventListener("touchstart", (e) => {
-    if (e.changedTouches && e.changedTouches[0]) {
-      touchStartX = e.changedTouches[0].clientX;
-    }
-    isOpen = true;
-    render();
-  }, { passive: true });
-
-  stage.addEventListener("touchend", (e) => {
-    if (e.changedTouches && e.changedTouches[0]) {
-      const diff = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(diff) > 40) {
-        if (diff < 0) {
-          activate((activeIndex + 1) % total);
-        } else {
-          activate((activeIndex - 1 + total) % total);
-        }
-      }
-    }
-  }, { passive: true });
-
-  render();
+function initAllComponents() {
+  initSolutionDisclosureCards();
+  initFaqAccordion();
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initOrbitCardStack);
+  document.addEventListener("DOMContentLoaded", initAllComponents);
 } else {
-  initOrbitCardStack();
+  initAllComponents();
 }
 

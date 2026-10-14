@@ -19,6 +19,10 @@ const assets = [
   "why-globe.js",
   "service-page.js",
   "assets/logo.webp",
+  "assets/solution-kernel.jpg",
+  "assets/solution-iot.jpg",
+  "assets/solution-cybersecurity.jpg",
+  "assets/solution-consulting.jpg",
 ];
 
 const encodedAssets = {};
