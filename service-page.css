@@ -320,419 +320,155 @@
   }
 }
 
-/* --- Circuit Board Delivery Timeline --- */
+/* --- Professional Process Steps Timeline (Inspired by 21st.dev Steps) --- */
 .delivery-section {
   position: relative;
 }
-.circuit-board {
+
+.process-steps-wrapper {
   position: relative;
-  margin-top: 48px;
-  padding: 48px 32px 36px;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.035) 0%, rgba(6, 8, 16, 0.8) 100%), #080c14;
+  margin-top: 40px;
+  padding: 44px 36px 40px;
+  background: #080c14;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
 }
 
-/* Faint PCB Dot Grid Pattern */
-.circuit-grid-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-/* Circuit Connecting Bus Track */
-.circuit-track {
-  position: absolute;
-  top: 69px; /* 48px padding-top + 21px half of 42px pad */
-  left: calc(32px + (100% - 64px) / (var(--total-steps, 6) * 2));
-  right: calc(32px + (100% - 64px) / (var(--total-steps, 6) * 2));
-  height: 2px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.circuit-wire {
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 2px;
-}
-
-.circuit-wire-active {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #ff3b30 0%, #ff5722 100%);
-  box-shadow: 0 0 10px rgba(255, 59, 48, 0.5);
-  border-radius: 2px;
-  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* Animated Travelling Red Signal */
-.circuit-signal {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ff3b30;
-  box-shadow: 0 0 10px #ff3b30, 0 0 22px rgba(255, 59, 48, 0.85);
-  transform: translate(-50%, -50%);
-  animation: circuitPulseRun 4.5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 2;
-}
-
-@keyframes circuitPulseRun {
-  0% {
-    left: 0%;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.6);
-  }
-  4% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  96% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    left: 100%;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.6);
-  }
-}
-
-/* Horizontal Milestones Grid */
-.circuit-milestones {
+.process-steps-list {
   display: grid;
   grid-template-columns: repeat(var(--total-steps, 6), 1fr);
-  gap: 16px;
-  position: relative;
-  z-index: 2;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.circuit-milestone {
+.process-step-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  outline: none;
-  text-decoration: none;
-  transition: transform 0.25s ease;
-}
-
-.circuit-node-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
   position: relative;
 }
 
-/* Circular PCB Solder Pad */
-.circuit-pad {
-  width: 42px;
-  height: 42px;
+.step-indicator-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: #0b0e16;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #0b0f19;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.circuit-solder-ring {
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  border: 1px dashed rgba(255, 255, 255, 0.14);
-  pointer-events: none;
-  transition: border-color 0.3s ease;
-}
-
-.circuit-node-number {
   font-family: var(--font-main, 'Space Grotesk', sans-serif);
-  font-size: 13px;
-  font-weight: 700;
-  color: #7f8897;
-  letter-spacing: -0.02em;
-  transition: color 0.3s ease;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+  z-index: 2;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-.circuit-lead-line {
-  width: 2px;
-  height: 22px;
+.process-step-item:hover .step-number {
+  border-color: #ef4444;
+  color: #ffffff;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.step-connector-line {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  right: -24px;
+  height: 1px;
   background: rgba(255, 255, 255, 0.12);
-  margin-top: 4px;
-  border-radius: 1px;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 }
 
-/* Milestone Information Card */
-.circuit-card {
-  width: 100%;
-  min-height: 165px;
-  padding: 18px 16px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.022);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.step-text-wrapper {
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.circuit-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.circuit-tag {
+.step-stage-label {
   font-family: var(--font-secondary, 'Inter', sans-serif);
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #64748b;
-  transition: color 0.3s ease;
+  color: #ef4444;
+  margin-bottom: 8px;
 }
 
-.circuit-status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.circuit-title {
+.step-heading {
   font-family: var(--font-main, 'Space Grotesk', sans-serif);
   font-size: 15px;
   font-weight: 600;
   line-height: 1.35;
-  color: #d1d5db;
+  color: #ffffff;
+  letter-spacing: -0.015em;
   margin: 0 0 8px 0;
-  letter-spacing: -0.02em;
-  transition: color 0.3s ease;
 }
 
-.circuit-desc {
+.step-description {
   font-family: var(--font-secondary, 'Inter', sans-serif);
-  font-size: 12px;
-  line-height: 1.5;
-  color: #717d8e;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #8b949e;
   margin: 0;
-  transition: color 0.3s ease;
 }
 
-/* Hover States */
-.circuit-milestone:hover,
-.circuit-milestone:focus-visible {
-  transform: translateY(-3px);
-}
-
-.circuit-milestone:hover .circuit-card,
-.circuit-milestone:focus-visible .circuit-card {
-  background: rgba(255, 255, 255, 0.045);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.circuit-milestone:hover .circuit-pad,
-.circuit-milestone:focus-visible .circuit-pad {
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
-}
-
-.circuit-milestone:hover .circuit-node-number,
-.circuit-milestone:focus-visible .circuit-node-number {
-  color: #ffffff;
-}
-
-/* Active Milestone State */
-.circuit-milestone.is-active .circuit-pad {
-  border-color: #ff3b30;
-  background: #111520;
-  box-shadow: 0 0 16px rgba(255, 59, 48, 0.35), 0 4px 12px rgba(0, 0, 0, 0.7);
-  transform: scale(1.08);
-}
-
-.circuit-milestone.is-active .circuit-solder-ring {
-  border-color: rgba(255, 59, 48, 0.45);
-}
-
-.circuit-milestone.is-active .circuit-node-number {
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-}
-
-.circuit-milestone.is-active .circuit-lead-line {
-  background: #ff3b30;
-  box-shadow: 0 0 6px rgba(255, 59, 48, 0.45);
-}
-
-.circuit-milestone.is-active .circuit-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 59, 48, 0.45);
-  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 59, 48, 0.2);
-}
-
-.circuit-milestone.is-active .circuit-tag {
-  color: #ff5722;
-}
-
-.circuit-milestone.is-active .circuit-status-dot {
-  background: #ff3b30;
-  box-shadow: 0 0 8px #ff3b30;
-  transform: scale(1.2);
-}
-
-.circuit-milestone.is-active .circuit-title {
-  color: #ffffff;
-}
-
-.circuit-milestone.is-active .circuit-desc {
-  color: #9ba6b6;
-}
-
-/* Subtle Hover Effect on Active Milestone */
-.circuit-milestone.is-active:hover {
-  transform: translateY(-4px);
-}
-
-.circuit-milestone.is-active:hover .circuit-card {
-  border-color: #ff5722;
-  box-shadow: 0 12px 30px -6px rgba(255, 59, 48, 0.25), 0 0 0 1px rgba(255, 59, 48, 0.35);
-}
-
-.circuit-milestone.is-active:hover .circuit-pad {
-  box-shadow: 0 0 22px rgba(255, 59, 48, 0.5), 0 4px 16px rgba(0, 0, 0, 0.8);
-}
-
-/* Completed Milestones (passed in progression) */
-.circuit-milestone.is-completed .circuit-pad {
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.circuit-milestone.is-completed .circuit-node-number {
-  color: #cbd5e1;
-}
-
-.circuit-milestone.is-completed .circuit-lead-line {
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.circuit-milestone.is-completed .circuit-status-dot {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-/* Responsive / Vertical Layout on Mobile and Tablets */
+/* Responsive / Vertical Layout on Tablet and Mobile */
 @media (max-width: 900px) {
-  .circuit-board {
-    padding: 32px 18px;
-    margin-top: 36px;
+  .process-steps-wrapper {
+    padding: 32px 20px;
+    margin-top: 32px;
   }
 
-  .circuit-track {
-    top: 32px;
-    bottom: 32px;
-    left: calc(18px + 21px); /* aligned to center of 42px node pad */
-    right: auto;
-    width: 2px;
-    height: auto;
-  }
-
-  .circuit-wire {
-    width: 2px;
-    height: 100%;
-  }
-
-  .circuit-wire-active {
-    width: 2px;
-    height: 0%;
-    transition: height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  .circuit-signal {
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, -50%);
-    animation: circuitPulseRunVertical 4.5s ease-in-out infinite;
-  }
-
-  @keyframes circuitPulseRunVertical {
-    0% {
-      top: 0%;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.6);
-    }
-    4% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    96% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    100% {
-      top: 100%;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.6);
-    }
-  }
-
-  .circuit-milestones {
+  .process-steps-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding-left: 58px;
+    gap: 0;
   }
 
-  .circuit-milestone {
-    align-items: flex-start;
-    text-align: left;
-    position: relative;
-  }
-
-  .circuit-node-wrap {
-    position: absolute;
-    left: -58px;
-    top: 14px;
-    margin-bottom: 0;
+  .process-step-item {
     flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .step-indicator-wrapper {
+    flex-direction: column;
     align-items: center;
+    margin-bottom: 0;
+    width: 32px;
+    flex-shrink: 0;
+    align-self: stretch;
   }
 
-  .circuit-lead-line {
-    width: 16px;
-    height: 2px;
-    margin-top: 0;
+  .step-connector-line {
+    position: static;
+    width: 1px;
+    height: auto;
+    flex-grow: 1;
+    min-height: 48px;
+    background: rgba(255, 255, 255, 0.12);
+    margin: 8px 0;
   }
 
-  .circuit-card {
-    min-height: auto;
-    padding: 16px 14px;
+  .step-text-wrapper {
+    padding-bottom: 28px;
+    flex: 1;
   }
 
-  .circuit-title {
-    font-size: 14.5px;
-  }
-
-  .circuit-desc {
-    font-size: 12px;
+  .process-step-item:last-child .step-text-wrapper {
+    padding-bottom: 0;
   }
 }
 
