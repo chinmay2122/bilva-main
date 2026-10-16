@@ -1,0 +1,994 @@
+/* ==========================================================================
+   BILVA TECH — QR CODE SOLUTIONS BENTO SHOWCASE & FINAL CTA BANNER
+   Inspired by Cloudflare / Modern High-Tech SaaS Bento System
+   ========================================================================== */
+
+/* --- SECTION SHELL --- */
+.qr-showcase-section {
+  position: relative;
+  background-color: #050505;
+  padding: 100px 0 120px;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.qr-showcase-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 15%, rgba(255, 87, 34, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 85%, rgba(255, 87, 34, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.qr-showcase-shell {
+  position: relative;
+  z-index: 1;
+  width: min(calc(100% - 48px), 1280px);
+  margin-inline: auto;
+}
+
+/* --- HEADER & EYEBROW --- */
+.qr-showcase-header {
+  margin-bottom: 56px;
+  max-width: 760px;
+}
+
+.qr-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ff5722;
+  margin-bottom: 16px;
+}
+
+.qr-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #ff5722;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 87, 34, 0.8);
+}
+
+.qr-heading {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+
+.qr-copy {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.65;
+  color: #9ca3af;
+  margin: 0;
+  max-width: 640px;
+}
+
+/* --- ASYMMETRIC BENTO GRID --- */
+.qr-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+/* Common Card Surface Styles */
+.qr-bento-card {
+  position: relative;
+  background: #0c0d12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.qr-bento-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 87, 34, 0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.qr-bento-card:hover {
+  border-color: rgba(255, 87, 34, 0.3);
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
+}
+
+.qr-bento-card:hover::before {
+  opacity: 1;
+}
+
+/* Card Column Spans */
+.qr-card-span-7 {
+  grid-column: span 7;
+}
+
+.qr-card-span-5 {
+  grid-column: span 5;
+}
+
+/* Card Inner Padding & Structure */
+.qr-card-inner {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.qr-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.qr-card-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff5722;
+  letter-spacing: 0.12em;
+}
+
+.qr-card-badge {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.qr-card-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+.qr-card-desc {
+  font-family: "Inter", sans-serif;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin: 0 0 24px;
+}
+
+/* ==========================================================================
+   CARD 01: MAIN FEATURE CARD — INTERACTIVE QR WORKSTATION
+   ========================================================================== */
+.qr-generator-layout {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 28px;
+  align-items: start;
+  margin-top: auto;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.qr-controller-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Presets Bar */
+.qr-preset-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.qr-preset-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d1d5db;
+  font-family: "Inter", sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.qr-preset-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.qr-preset-btn.active {
+  background: rgba(255, 87, 34, 0.15);
+  border-color: #ff5722;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 87, 34, 0.25);
+}
+
+/* Input Bar */
+.qr-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.qr-input-icon {
+  position: absolute;
+  left: 14px;
+  color: #ff5722;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.qr-text-input {
+  width: 100%;
+  background: #07080a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 12px 38px 12px 38px;
+  color: #ffffff;
+  font-family: "Inter", monospace;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.qr-text-input:focus {
+  border-color: #ff5722;
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2);
+}
+
+.qr-input-clear {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.qr-input-clear:hover {
+  color: #ffffff;
+}
+
+/* Generator Options Row */
+.qr-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.qr-ecc-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.qr-ecc-select {
+  background: #07080a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.qr-ecc-select:focus {
+  border-color: #ff5722;
+}
+
+/* Action Buttons */
+.qr-action-btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.qr-btn-primary {
+  background: #ff5722;
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(255, 87, 34, 0.3);
+}
+
+.qr-btn-primary:hover {
+  background: #e64a19;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 87, 34, 0.45);
+}
+
+.qr-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.qr-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Interactive Preview Box */
+.qr-preview-box {
+  background: #050608;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.qr-viewfinder-frame {
+  position: relative;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-canvas-element {
+  display: block;
+  width: 170px;
+  height: 170px;
+  image-rendering: pixelated;
+}
+
+/* Optical Corner Reticle Guides */
+.qr-reticle-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ff5722;
+  pointer-events: none;
+}
+
+.qr-reticle-tl {
+  top: -4px;
+  left: -4px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.qr-reticle-tr {
+  top: -4px;
+  right: -4px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.qr-reticle-bl {
+  bottom: -4px;
+  left: -4px;
+  border-right: none;
+  border-top: none;
+}
+
+.qr-reticle-br {
+  bottom: -4px;
+  right: -4px;
+  border-left: none;
+  border-top: none;
+}
+
+.qr-preview-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  color: #10b981;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+}
+
+.qr-status-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: qrPulse 2s infinite ease-in-out;
+}
+
+@keyframes qrPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.qr-preview-meta {
+  font-family: "Inter", monospace;
+  font-size: 10.5px;
+  color: #6b7280;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* Card Explore Link Footer */
+.qr-card-explore-bar {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.qr-explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.qr-explore-link i {
+  color: #ff5722;
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+.qr-explore-link:hover {
+  color: #ff5722;
+  gap: 12px;
+}
+
+.qr-explore-link:hover i {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   CARD 02: CUSTOM QR SPECIFICATION & DURABILITY
+   ========================================================================== */
+.qr-spec-visual {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qr-spec-anatomy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.qr-anatomy-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.qr-anatomy-item:hover {
+  border-color: rgba(255, 87, 34, 0.3);
+}
+
+.qr-anatomy-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.qr-anatomy-header i {
+  color: #ff5722;
+  font-size: 11px;
+}
+
+.qr-anatomy-desc {
+  font-family: "Inter", sans-serif;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.qr-spec-callout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 87, 34, 0.06);
+  border-radius: 8px;
+  border-left: 3px solid #ff5722;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: #d1d5db;
+}
+
+.qr-spec-callout i {
+  color: #ff5722;
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   CARD 03: BUSINESS APPLICATIONS (USE CASES)
+   ========================================================================== */
+.qr-apps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.qr-app-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.qr-app-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 87, 34, 0.3);
+  transform: translateX(4px);
+}
+
+.qr-app-icon-wrap {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 87, 34, 0.1);
+  border: 1px solid rgba(255, 87, 34, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff5722;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.qr-app-content {
+  flex: 1;
+}
+
+.qr-app-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.qr-app-load-tag {
+  font-size: 10px;
+  color: #ff5722;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.qr-app-item:hover .qr-app-load-tag {
+  opacity: 1;
+}
+
+.qr-app-desc {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ==========================================================================
+   CARD 04: INDUSTRIAL VARIABLE PRINTING & MIS LOGGING
+   ========================================================================== */
+.qr-industrial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: auto;
+}
+
+.qr-industrial-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.25s ease;
+}
+
+.qr-industrial-card:hover {
+  border-color: rgba(255, 87, 34, 0.3);
+}
+
+.qr-ind-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.qr-ind-header i {
+  color: #ff5722;
+  font-size: 13px;
+}
+
+.qr-ind-desc {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ==========================================================================
+   PART B: FINAL HIGH-CONTRAST CTA BANNER
+   Inspired by Cloudflare's bold, high-contrast banner composition
+   ========================================================================== */
+.final-cta-section {
+  position: relative;
+  background-color: #050505;
+  padding: 40px 0 100px;
+  overflow: hidden;
+}
+
+.final-cta-shell {
+  width: min(calc(100% - 48px), 1280px);
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta-banner {
+  position: relative;
+  background: linear-gradient(135deg, #0e1017 0%, #08090d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: clamp(48px, 6vw, 76px) clamp(24px, 5vw, 64px);
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 
+    0 24px 60px -15px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle Technical Ambient Glow */
+.final-cta-banner::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 350px;
+  background: radial-gradient(ellipse at center, rgba(255, 87, 34, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle Technical Micro-Grid */
+.final-cta-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Corner Reticle Markers (+) */
+.cta-corner-tick {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 87, 34, 0.6);
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cta-tick-tl { top: 16px; left: 16px; }
+.cta-tick-tr { top: 16px; right: 16px; }
+.cta-tick-bl { bottom: 16px; left: 16px; }
+.cta-tick-br { bottom: 16px; right: 16px; }
+
+.final-cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin-inline: auto;
+}
+
+.final-cta-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ff5722;
+  margin-bottom: 18px;
+}
+
+.final-cta-heading {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(34px, 4.8vw, 62px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+
+.final-cta-copy {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.65;
+  color: #a1a1aa;
+  max-width: 620px;
+  margin: 0 auto 38px;
+}
+
+/* CTA Action Buttons */
+.final-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.final-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 999px;
+  color: #000000;
+  background: #ffffff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+  border: 1px solid transparent;
+}
+
+.final-cta-btn-primary i {
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+.final-cta-btn-primary:hover {
+  background: #000000;
+  color: #ffffff;
+  border-color: #ff5722;
+  box-shadow: 0 6px 26px rgba(255, 87, 34, 0.4);
+  transform: translateY(-2px);
+}
+
+.final-cta-btn-primary:hover i {
+  transform: translateX(4px);
+  color: #ff5722;
+}
+
+.final-cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.final-cta-btn-secondary i {
+  font-size: 13px;
+  color: #a1a1aa;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.final-cta-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.final-cta-btn-secondary:hover i {
+  color: #ff5722;
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   VIEWPORT REVEAL ANIMATIONS
+   ========================================================================== */
+.qr-reveal-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.qr-reveal-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay for cards */
+.qr-delay-1 { transition-delay: 0.08s; }
+.qr-delay-2 { transition-delay: 0.16s; }
+.qr-delay-3 { transition-delay: 0.24s; }
+.qr-delay-4 { transition-delay: 0.32s; }
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .qr-card-span-7,
+  .qr-card-span-5 {
+    grid-column: span 12;
+  }
+
+  .qr-generator-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .qr-controller-side {
+    width: 100%;
+  }
+
+  .qr-preview-box {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .qr-showcase-section {
+    padding: 70px 0 90px;
+  }
+
+  .qr-card-inner {
+    padding: 24px 20px;
+  }
+
+  .qr-spec-anatomy,
+  .qr-industrial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qr-action-btn-row {
+    flex-direction: column;
+  }
+
+  .qr-btn-primary,
+  .qr-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .final-cta-banner {
+    padding: 44px 20px;
+    border-radius: 18px;
+  }
+
+  .final-cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .final-cta-btn-primary,
+  .final-cta-btn-secondary {
+    width: 100%;
+  }
+}

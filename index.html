@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="solutions-bento.css" />
     <link rel="stylesheet" href="comparison.css" />
     <link rel="stylesheet" href="testimonials.css" />
+    <link rel="stylesheet" href="qr-showcase.css" />
 
     <script type="importmap">
       {
@@ -390,6 +391,296 @@
               </span>
             </div>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         QR CODE SOLUTIONS (ASYMMETRIC BENTO SHOWCASE)
+         ================================================== -->
+    <section class="qr-showcase-section" id="qr-solutions" aria-label="QR Code Solutions">
+      <div class="qr-showcase-shell">
+        <div class="qr-showcase-header">
+          <p class="qr-eyebrow">QR CODE SOLUTIONS</p>
+          <h2 class="qr-heading">Make Every Scan Count.</h2>
+          <p class="qr-copy">
+            Explore QR code experiences designed to connect physical touchpoints with digital destinations.
+          </p>
+        </div>
+
+        <div class="qr-bento-grid" role="region" aria-label="QR Code Showcase Bento Grid">
+          <!-- Main Feature Card: QR Code Generator (Span 7) -->
+          <div class="qr-bento-card qr-card-span-7 qr-reveal-card qr-delay-1" id="qr-workstation-card">
+            <div class="qr-card-inner">
+              <div class="qr-card-header">
+                <span class="qr-card-num">01 // WORKSTATION</span>
+                <span class="qr-card-badge">Live Generator</span>
+              </div>
+              <h3 class="qr-card-title">Interactive QR Code Engine</h3>
+              <p class="qr-card-desc">
+                Input destination parameters or select a structured payload. Instantly generate, preview, and download a high-precision, scannable QR code.
+              </p>
+
+              <div class="qr-generator-layout">
+                <div class="qr-controller-side">
+                  <!-- Presets -->
+                  <div class="qr-preset-row" role="group" aria-label="QR Presets">
+                    <button type="button" class="qr-preset-btn active" data-preset="url">
+                      <i class="fa-solid fa-link" aria-hidden="true"></i> URL
+                    </button>
+                    <button type="button" class="qr-preset-btn" data-preset="vcard">
+                      <i class="fa-solid fa-address-card" aria-hidden="true"></i> vCard
+                    </button>
+                    <button type="button" class="qr-preset-btn" data-preset="text">
+                      <i class="fa-solid fa-align-left" aria-hidden="true"></i> Text
+                    </button>
+                  </div>
+
+                  <!-- Input -->
+                  <div class="qr-input-group">
+                    <span class="qr-input-icon" aria-hidden="true">
+                      <i class="fa-solid fa-qrcode"></i>
+                    </span>
+                    <input
+                      type="text"
+                      id="qr-input-field"
+                      class="qr-text-input"
+                      value="https://bilvatech.com"
+                      placeholder="Enter destination URL or text payload..."
+                      aria-label="QR code destination URL or payload"
+                    />
+                    <button type="button" id="qr-clear-btn" class="qr-input-clear" aria-label="Clear input">
+                      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                    </button>
+                  </div>
+
+                  <!-- Options Row: ECC Level -->
+                  <div class="qr-options-row">
+                    <div class="qr-ecc-wrapper">
+                      <label for="qr-ecc-select">Error Correction:</label>
+                      <select id="qr-ecc-select" class="qr-ecc-select" aria-label="Error Correction Level">
+                        <option value="L">L — Low (7%)</option>
+                        <option value="M" selected>M — Standard (15%)</option>
+                        <option value="Q">Q — Robust (25%)</option>
+                        <option value="H">H — High Print (30%)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Action Buttons -->
+                  <div class="qr-action-btn-row">
+                    <button type="button" id="qr-generate-btn" class="qr-btn-primary">
+                      <i class="fa-solid fa-bolt" aria-hidden="true"></i> Generate QR
+                    </button>
+                    <button type="button" id="qr-download-btn" class="qr-btn-secondary">
+                      <i class="fa-solid fa-download" aria-hidden="true"></i> Download PNG
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Live Preview Display -->
+                <div class="qr-preview-box">
+                  <div class="qr-viewfinder-frame">
+                    <span class="qr-reticle-corner qr-reticle-tl" aria-hidden="true"></span>
+                    <span class="qr-reticle-corner qr-reticle-tr" aria-hidden="true"></span>
+                    <span class="qr-reticle-corner qr-reticle-bl" aria-hidden="true"></span>
+                    <span class="qr-reticle-corner qr-reticle-br" aria-hidden="true"></span>
+                    <canvas id="qr-canvas" class="qr-canvas-element" width="170" height="170" role="img" aria-label="Live scannable QR Code Preview"></canvas>
+                  </div>
+
+                  <div class="qr-preview-status" aria-live="polite">
+                    <span class="qr-status-pulse" aria-hidden="true"></span>
+                    <span>Live &amp; Scannable</span>
+                  </div>
+                  <div class="qr-preview-meta" id="qr-meta-text">25 × 25 Modules • ECC Level M</div>
+                </div>
+              </div>
+
+              <!-- Card Action Footer -->
+              <div class="qr-card-explore-bar">
+                <a href="cybersecurity-solutions.html" class="qr-explore-link">
+                  <span>Explore Complete QR Code Service</span>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Supporting Card 1: Custom QR Design (Span 5) -->
+          <div class="qr-bento-card qr-card-span-5 qr-reveal-card qr-delay-2">
+            <div class="qr-card-inner">
+              <div class="qr-card-header">
+                <span class="qr-card-num">02 // SPECIFICATION</span>
+                <span class="qr-card-badge">Print Precision</span>
+              </div>
+              <h3 class="qr-card-title">Custom QR Architecture</h3>
+              <p class="qr-card-desc">
+                Engineered for strict optical readability across digital displays and industrial physical substrates. Configurable matrix densities, variable quiet zones, and Reed-Solomon error correction preserve scan fidelity even through surface friction.
+              </p>
+
+              <div class="qr-spec-visual">
+                <div class="qr-spec-anatomy">
+                  <div class="qr-anatomy-item">
+                    <div class="qr-anatomy-header">
+                      <i class="fa-solid fa-crosshairs" aria-hidden="true"></i>
+                      <span>Finder Patterns</span>
+                    </div>
+                    <p class="qr-anatomy-desc">Three 7×7 position anchors for 360° omnidirectional scanner orientation.</p>
+                  </div>
+                  <div class="qr-anatomy-item">
+                    <div class="qr-anatomy-header">
+                      <i class="fa-solid fa-bars-staggered" aria-hidden="true"></i>
+                      <span>Timing Tracks</span>
+                    </div>
+                    <p class="qr-anatomy-desc">Alternating dark/light rows synchronizing modular coordinate grid pitch.</p>
+                  </div>
+                  <div class="qr-anatomy-item">
+                    <div class="qr-anatomy-header">
+                      <i class="fa-solid fa-vector-square" aria-hidden="true"></i>
+                      <span>Alignment Module</span>
+                    </div>
+                    <p class="qr-anatomy-desc">Compensates for substrate curvature, perspective skew, and angular distortion.</p>
+                  </div>
+                  <div class="qr-anatomy-item">
+                    <div class="qr-anatomy-header">
+                      <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                      <span>Error Codewords</span>
+                    </div>
+                    <p class="qr-anatomy-desc">Multi-level Reed-Solomon recovery restoring up to 30% damaged matrix area.</p>
+                  </div>
+                </div>
+
+                <div class="qr-spec-callout">
+                  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                  <span>High-contrast monochrome matrix delivers optimal optical decodability on all camera sensors.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Supporting Card 2: Business Applications (Span 5) -->
+          <div class="qr-bento-card qr-card-span-5 qr-reveal-card qr-delay-3">
+            <div class="qr-card-inner">
+              <div class="qr-card-header">
+                <span class="qr-card-num">03 // USE CASES</span>
+                <span class="qr-card-badge">Deployment Scenarios</span>
+              </div>
+              <h3 class="qr-card-title">Business Applications</h3>
+              <p class="qr-card-desc">
+                Connect physical touchpoints seamlessly into modern digital environments. Select a scenario to test its structure in the workstation:
+              </p>
+
+              <div class="qr-apps-list" role="list">
+                <div class="qr-app-item" role="listitem" data-usecase="serial" tabindex="0">
+                  <div class="qr-app-icon-wrap" aria-hidden="true">
+                    <i class="fa-solid fa-box-open"></i>
+                  </div>
+                  <div class="qr-app-content">
+                    <h4 class="qr-app-title">
+                      <span>Product Serialization</span>
+                      <span class="qr-app-load-tag">Load Sample <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                    </h4>
+                    <p class="qr-app-desc">Dynamic batch URLs, packaging verification links, and digital warranty activation.</p>
+                  </div>
+                </div>
+
+                <div class="qr-app-item" role="listitem" data-usecase="catalog" tabindex="0">
+                  <div class="qr-app-icon-wrap" aria-hidden="true">
+                    <i class="fa-solid fa-utensils"></i>
+                  </div>
+                  <div class="qr-app-content">
+                    <h4 class="qr-app-title">
+                      <span>Digital Menus &amp; Catalogs</span>
+                      <span class="qr-app-load-tag">Load Sample <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                    </h4>
+                    <p class="qr-app-desc">Frictionless contactless dining, multi-language routing, and instant collateral access.</p>
+                  </div>
+                </div>
+
+                <div class="qr-app-item" role="listitem" data-usecase="vcard" tabindex="0">
+                  <div class="qr-app-icon-wrap" aria-hidden="true">
+                    <i class="fa-solid fa-id-card"></i>
+                  </div>
+                  <div class="qr-app-content">
+                    <h4 class="qr-app-title">
+                      <span>Business Contact Cards</span>
+                      <span class="qr-app-load-tag">Load Sample <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                    </h4>
+                    <p class="qr-app-desc">Single-scan vCard downloads directly saving credentials into smartphone address books.</p>
+                  </div>
+                </div>
+
+                <div class="qr-app-item" role="listitem" data-usecase="campaign" tabindex="0">
+                  <div class="qr-app-icon-wrap" aria-hidden="true">
+                    <i class="fa-solid fa-bullhorn"></i>
+                  </div>
+                  <div class="qr-app-content">
+                    <h4 class="qr-app-title">
+                      <span>Campaign Destinations</span>
+                      <span class="qr-app-load-tag">Load Sample <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                    </h4>
+                    <p class="qr-app-desc">Measurable print-to-web transitions for trade show stands, posters, and print media.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Supporting Card 3: QR Management & Security (Span 7) -->
+          <div class="qr-bento-card qr-card-span-7 qr-reveal-card qr-delay-4">
+            <div class="qr-card-inner">
+              <div class="qr-card-header">
+                <span class="qr-card-num">04 // PRODUCTION ENGINE</span>
+                <span class="qr-card-badge">Industrial Printing</span>
+              </div>
+              <h3 class="qr-card-title">Industrial Variable Printing &amp; MIS Control</h3>
+              <p class="qr-card-desc">
+                Engineered for high-throughput production lines. Bilva Tech's Windows-based software connects directly to commercial digital printing machinery to output unit-by-unit dynamic QR codes and secure anti-counterfeiting patterns.
+              </p>
+
+              <div class="qr-industrial-grid">
+                <div class="qr-industrial-card">
+                  <div class="qr-ind-header">
+                    <i class="fa-solid fa-print" aria-hidden="true"></i>
+                    <span>Direct Printer Connectivity</span>
+                  </div>
+                  <p class="qr-ind-desc">Direct machine integration driving digital print heads unit-by-unit without intermediate raster stalls.</p>
+                </div>
+
+                <div class="qr-industrial-card">
+                  <div class="qr-ind-header">
+                    <i class="fa-solid fa-fingerprint" aria-hidden="true"></i>
+                    <span>Variable Serialization</span>
+                  </div>
+                  <p class="qr-ind-desc">Generate non-repeating dynamic QR codes and unique tracking numbers on every consecutive physical unit.</p>
+                </div>
+
+                <div class="qr-industrial-card">
+                  <div class="qr-ind-header">
+                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                    <span>Dynamic Secure Patterns</span>
+                  </div>
+                  <p class="qr-ind-desc">Unit-varying security micro-patterns integrated directly on existing artwork for physical anti-counterfeiting.</p>
+                </div>
+
+                <div class="qr-industrial-card">
+                  <div class="qr-ind-header">
+                    <i class="fa-solid fa-database" aria-hidden="true"></i>
+                    <span>AUTO, API &amp; CSV Data Sources</span>
+                  </div>
+                  <p class="qr-ind-desc">Flexible variable data feeding from automated sequential counters, live REST endpoints, or CSV batch imports.</p>
+                </div>
+              </div>
+
+              <!-- Card Action Footer -->
+              <div class="qr-card-explore-bar">
+                <a href="cybersecurity-solutions.html" class="qr-explore-link">
+                  <span>Explore Secure QR Printing Software</span>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -882,27 +1173,43 @@
       </div>
     </section>
 
-    <section class="cta-section" id="final-cta" aria-label="Final Call to Action">
-      <div class="cta-bg-grid" aria-hidden="true"></div>
-      <div class="cta-shell">
-        <p class="cta-eyebrow">Secure What Matters</p>
-        <h2 class="cta-heading">Let's engineer security around your system.</h2>
-        <p class="cta-copy">
-          Talk to our team about your technology environment, security requirements and risk exposure.
-        </p>
-        <div class="cta-actions">
-          <a href="contact.html" class="cta-primary-btn">
-            Start a Conversation <i class="fa-solid fa-arrow-right"></i>
-          </a>
-          <a href="solutions.html" class="cta-secondary-link">
-            Explore Our Solutions <i class="fa-solid fa-arrow-right"></i>
-          </a>
+    <!-- ==================================================
+         FINAL CTA BANNER (CLOUDFLARE-INSPIRED HIGH CONTRAST)
+         ================================================== -->
+    <section class="final-cta-section" id="final-cta" aria-label="Final Call to Action">
+      <div class="final-cta-shell">
+        <div class="final-cta-banner">
+          <span class="cta-corner-tick cta-tick-tl" aria-hidden="true">+</span>
+          <span class="cta-corner-tick cta-tick-tr" aria-hidden="true">+</span>
+          <span class="cta-corner-tick cta-tick-bl" aria-hidden="true">+</span>
+          <span class="cta-corner-tick cta-tick-br" aria-hidden="true">+</span>
+
+          <div class="final-cta-content">
+            <p class="final-cta-eyebrow">READY TO GET STARTED</p>
+            <h2 class="final-cta-heading">Ready to Explore QR Solutions?</h2>
+            <p class="final-cta-copy">
+              Tell us what you want your QR experience to achieve, and explore an approach suited to your requirements.
+            </p>
+
+            <div class="final-cta-actions">
+              <a href="cybersecurity-solutions.html" class="final-cta-btn-primary">
+                <span>Explore QR Code Service</span>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a href="contact.html" class="final-cta-btn-secondary">
+                <span>Discuss Your Requirements</span>
+                <i class="fa-solid fa-comments" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <footer class="site-footer"></footer>
+    <script src="assets/qrcode.min.js"></script>
     <script src="main.js"></script>
+    <script src="qr-showcase.js"></script>
     <script type="module" src="footer-mount.js"></script>
     <script type="module" src="why-globe.js"></script>
     <script type="module" src="about-section.js"></script>
