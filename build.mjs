@@ -23,6 +23,8 @@ const assets = [
   "components/CurvedInput.js",
   "components/CurvedInput.jsx",
   "components/CurvedInput.css",
+  "comparison.css",
+  "comparison.js",
   "testimonials.css",
   "testimonials.js",
   "testimonials-data.js",

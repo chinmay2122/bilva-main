@@ -1,10 +1,8 @@
 /* ==================================================
    BILVA TECH — COMPARISON SECTION
    "Why Choose Bilva Tech Over Others"
-   Side-by-side engineering comparison with traditional approaches
+   Side-by-side engineering comparison panels
    ================================================== */
-
-@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap");
 
 .comparison-section {
   position: relative;
@@ -22,27 +20,19 @@
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(36px, 5vw, 56px);
+  align-items: center;
 }
 
 /* --------------------------------------------------
-   Header & Eyebrow Badge
+   Section Header
    -------------------------------------------------- */
 .comparison-header {
   text-align: center;
-  max-width: 760px;
-  margin: 0 auto;
+  max-width: 820px;
+  margin: 0 auto clamp(36px, 5vw, 56px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.comparison-section.is-visible .comparison-header {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Outlined Eyebrow Badge */
@@ -50,20 +40,21 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 20px;
   padding: 5px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 87, 34, 0.35);
-  background: rgba(255, 87, 34, 0.06);
-  color: #ff5722;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #d0cecf;
   font-family: var(--font-main);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.comparison-eyebrow-dot {
+.comparison-badge-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -71,277 +62,294 @@
   box-shadow: 0 0 8px rgba(255, 87, 34, 0.6);
 }
 
+/* Heading with elegant italic serif */
 .comparison-heading {
   font-family: var(--font-main);
   font-size: clamp(32px, 4.2vw, 52px);
   font-weight: 700;
   letter-spacing: -0.035em;
-  line-height: 1.15;
+  line-height: 1.14;
   color: #ffffff;
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 }
 
-/* Elegant italic serif accent for "Over Others" */
-.comparison-heading .serif-accent {
-  font-family: "Newsreader", "Playfair Display", Georgia, serif;
+.comparison-serif-italic {
+  font-family: "Playfair Display", "Newsreader", Georgia, "Times New Roman", serif;
   font-style: italic;
   font-weight: 400;
-  letter-spacing: normal;
-  color: #ff7849;
+  letter-spacing: -0.01em;
+  color: #f3f4f6;
   padding-left: 2px;
 }
 
 .comparison-subhead {
   font-family: var(--font-secondary);
-  font-size: clamp(15px, 1.35vw, 16.5px);
+  font-size: clamp(15px, 1.35vw, 17px);
   line-height: 1.65;
   color: #a4a4a4;
   margin: 0;
-  max-width: 640px;
+  max-width: 620px;
 }
 
 /* --------------------------------------------------
-   Two-Panel Comparison Grid
+   Comparison Grid & Panels
    -------------------------------------------------- */
 .comparison-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: clamp(20px, 3vw, 32px);
   width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
   align-items: stretch;
 }
 
-.comparison-card {
+.comparison-panel {
   position: relative;
   border-radius: 16px;
   padding: clamp(24px, 3.5vw, 36px);
   display: flex;
   flex-direction: column;
-  transition: transform 300ms var(--ease-out), border-color 300ms ease, box-shadow 300ms ease;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 750ms cubic-bezier(0.16, 1, 0.3, 1), transform 750ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease, background 300ms ease;
-}
-
-.comparison-section.is-visible .comparison-card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Delay for staggered panel reveal */
-.comparison-section.is-visible .comparison-card.bilva-card {
-  transition-delay: 150ms;
-}
-
-.comparison-section.is-visible .comparison-card.traditional-card {
-  transition-delay: 280ms;
+  transition: border-color 280ms ease, background-color 280ms ease, transform 280ms var(--ease-out);
+  overflow: hidden;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
 }
 
 /* --------------------------------------------------
-   Left Panel: Bilva Tech (Elevated with subtle brand accent)
+   Left Panel: Bilva Tech (Primary/Highlighted)
    -------------------------------------------------- */
-.comparison-card.bilva-card {
-  background: linear-gradient(180deg, rgba(255, 87, 34, 0.04) 0%, rgba(13, 14, 18, 0.95) 100%);
-  border: 1px solid rgba(255, 87, 34, 0.22);
-  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+.panel-bilva {
+  background: linear-gradient(180deg, rgba(26, 28, 36, 0.72) 0%, rgba(12, 13, 17, 0.94) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.comparison-card.bilva-card:hover {
-  border-color: rgba(255, 87, 34, 0.45);
-  background: linear-gradient(180deg, rgba(255, 87, 34, 0.06) 0%, rgba(16, 17, 22, 0.98) 100%);
-}
-
-/* Subtle top indicator bar */
-.bilva-card::before {
+/* Subtle brand accent line at top */
+.panel-bilva::before {
   content: "";
   position: absolute;
   top: 0;
-  left: 36px;
-  right: 36px;
+  left: 0;
+  right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #ff5722 50%, transparent 100%);
-  opacity: 0.8;
+  background: linear-gradient(90deg, #ff5722 0%, rgba(255, 87, 34, 0.4) 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.panel-bilva:hover {
+  border-color: rgba(255, 87, 34, 0.35);
+  transform: translateY(-2px);
 }
 
 /* --------------------------------------------------
-   Right Panel: Traditional Approaches (Neutral & Muted)
+   Right Panel: Traditional Approaches (Muted)
    -------------------------------------------------- */
-.comparison-card.traditional-card {
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.45);
+.panel-traditional {
+  background: linear-gradient(180deg, rgba(16, 17, 22, 0.55) 0%, rgba(9, 10, 13, 0.75) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.comparison-card.traditional-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.025);
+.panel-traditional:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 /* --------------------------------------------------
-   Card Header
+   Panel Header
    -------------------------------------------------- */
-.comparison-card-header {
-  padding-bottom: 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.bilva-card .comparison-card-header {
-  border-bottom-color: rgba(255, 87, 34, 0.15);
-}
-
-.panel-badge-row {
+.panel-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: clamp(18px, 2.5vw, 24px);
+  margin-bottom: clamp(18px, 2.5vw, 24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 12px;
 }
 
-.panel-badge-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-main);
-  font-size: 19px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-}
-
-.panel-brand-icon {
-  width: 28px;
-  height: 28px;
+.panel-brand-identity {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
 }
 
-.panel-badge-neutral {
-  font-family: var(--font-main);
-  font-size: 19px;
-  font-weight: 600;
-  color: #94a3b8;
-  letter-spacing: -0.02em;
-}
-
-.panel-tagline {
-  font-family: var(--font-secondary);
-  font-size: 13px;
-  color: #64748b;
-  margin: 0;
-}
-
-.bilva-card .panel-tagline {
-  color: #a4a4a4;
-}
-
-/* --------------------------------------------------
-   Comparison Row Items
-   -------------------------------------------------- */
-.comparison-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.comparison-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  min-height: 82px;
-  box-sizing: border-box;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.comparison-row:last-child {
-  border-bottom: none;
-}
-
-/* Stagger reveal for rows */
-.comparison-section.is-visible .comparison-row {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.comparison-section.is-visible .comparison-row:nth-child(1) { transition-delay: 240ms; }
-.comparison-section.is-visible .comparison-row:nth-child(2) { transition-delay: 320ms; }
-.comparison-section.is-visible .comparison-row:nth-child(3) { transition-delay: 400ms; }
-.comparison-section.is-visible .comparison-row:nth-child(4) { transition-delay: 480ms; }
-.comparison-section.is-visible .comparison-row:nth-child(5) { transition-delay: 560ms; }
-
-/* Icon Styling */
-.comp-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+.panel-logo-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 1px;
 }
 
-/* Bilva Tech Checkmark */
-.comp-icon.check-icon {
-  background: rgba(255, 87, 34, 0.12);
-  color: #ff5722;
-  border: 1px solid rgba(255, 87, 34, 0.3);
-  font-size: 12px;
+.panel-logo-mark img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
-/* Traditional Approaches Neutral Icon */
-.comp-icon.neutral-icon {
-  background: rgba(255, 255, 255, 0.035);
+.panel-title {
+  font-family: var(--font-main);
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.panel-traditional .panel-title {
+  color: #c4c8d0;
+}
+
+/* Panel Tag / Badge */
+.panel-badge {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.panel-bilva .panel-badge {
+  color: #ff8a65;
+  background: rgba(255, 87, 34, 0.1);
+  border: 1px solid rgba(255, 87, 34, 0.25);
+}
+
+.panel-traditional .panel-badge {
   color: #64748b;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --------------------------------------------------
+   Comparison Rows List
+   -------------------------------------------------- */
+.comparison-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex-grow: 1;
+}
+
+.comparison-row-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: clamp(14px, 1.8vw, 18px) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 200ms ease;
+  min-height: 72px;
+}
+
+.comparison-row-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Row Icons */
+.comp-icon-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
   font-size: 11px;
 }
 
-/* Row Content */
-.comparison-text {
+/* Bilva Checkmark Icon */
+.panel-bilva .comp-icon-box {
+  background: rgba(255, 87, 34, 0.12);
+  border: 1px solid rgba(255, 87, 34, 0.35);
+  color: #ff5722;
+}
+
+/* Traditional Neutral Comparison Icon */
+.panel-traditional .comp-icon-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #64748b;
+  font-size: 10px;
+}
+
+/* Row Text */
+.comp-row-content {
+  flex-grow: 1;
+}
+
+.comp-row-text {
   font-family: var(--font-secondary);
-  font-size: 14.5px;
+  font-size: clamp(13.5px, 1.1vw, 14.5px);
   line-height: 1.55;
   margin: 0;
 }
 
-.bilva-card .comparison-text {
-  color: #e5e7eb;
+.panel-bilva .comp-row-text {
+  color: #f1f5f9;
   font-weight: 500;
 }
 
-.traditional-card .comparison-text {
+.panel-traditional .comp-row-text {
   color: #8c93a0;
   font-weight: 400;
 }
 
+/* Row Focus/Hover subtle interaction */
+.comparison-row-item:hover .comp-row-text {
+  color: #ffffff;
+}
+
+.panel-traditional .comparison-row-item:hover .comp-row-text {
+  color: #b0b4bc;
+}
+
 /* --------------------------------------------------
-   Section Outro Note
+   Entrance Reveal Animation (Staggered)
    -------------------------------------------------- */
-.comparison-outro {
-  text-align: center;
-  margin-top: -8px;
+.comparison-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.comparison-outro p {
-  font-family: var(--font-secondary);
-  font-size: 12.5px;
-  color: #5a6372;
-  margin: 0;
-  line-height: 1.6;
+.comparison-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.comparison-section.is-visible .comparison-panel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.comparison-panel {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comparison-section.is-visible .panel-bilva {
+  transition-delay: 100ms;
+}
+
+.comparison-section.is-visible .panel-traditional {
+  transition-delay: 220ms;
 }
 
 /* --------------------------------------------------
-   Responsive Breakpoints
+   Responsive Design
    -------------------------------------------------- */
 @media (max-width: 860px) {
   .comparison-grid {
@@ -349,34 +357,30 @@
     gap: 24px;
   }
   
-  .comparison-row {
+  .comparison-row-item {
     min-height: auto;
-    padding: 14px 0;
   }
 }
 
-@media (max-width: 580px) {
-  .comparison-card {
-    padding: 20px;
+@media (max-width: 540px) {
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
   
-  .panel-badge-brand,
-  .panel-badge-neutral {
-    font-size: 17px;
-  }
-  
-  .comparison-text {
-    font-size: 13.5px;
+  .panel-badge {
+    align-self: flex-start;
   }
 }
 
 /* --------------------------------------------------
-   Reduced Motion
+   prefers-reduced-motion: reduce
    -------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .comparison-header,
-  .comparison-card,
-  .comparison-row {
+  .comparison-section,
+  .comparison-panel,
+  .comparison-row-item {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

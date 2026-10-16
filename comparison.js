@@ -1,6 +1,6 @@
 /**
- * Bilva Tech — Comparison Section Component
- * Handles the restrained viewport reveal and staggered row animations
+ * Bilva Tech — Comparison Section Interaction
+ * Handles smooth IntersectionObserver reveal and responsive behavior.
  */
 
 export function initComparisonSection() {
@@ -8,28 +8,29 @@ export function initComparisonSection() {
   if (!section) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (reduceMotion || !("IntersectionObserver" in window)) {
+  if (reduceMotion) {
     section.classList.add("is-visible");
     return;
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          section.classList.add("is-visible");
-          observer.disconnect();
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  observer.observe(section);
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.classList.add("is-visible");
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(section);
+  } else {
+    section.classList.add("is-visible");
+  }
 }
 
-// Auto-initialize when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initComparisonSection);
 } else {
