@@ -25,6 +25,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="components/CurvedInput.css" />
+    <link rel="stylesheet" href="about-section.css" />
     <link rel="stylesheet" href="comparison.css" />
     <link rel="stylesheet" href="testimonials.css" />
 
@@ -146,6 +147,66 @@
         </article>
       </section>
     </div>
+
+    <!-- ==================================================
+         ABOUT BILVA TECH SECTION
+         Spacious two-column agency layout with 4 capability highlights
+         ================================================== -->
+    <section class="about-bilvatech-section" id="about-bilvatech" aria-label="About Bilva Tech">
+      <div class="about-shell">
+        <div class="about-intro-grid">
+          <!-- Left Column: Eyebrow, Heading, Primary Introduction -->
+          <div class="about-left-col">
+            <p class="about-eyebrow">ABOUT BILVA TECH</p>
+            <h2 class="about-heading">Engineering Security Into Every Layer.</h2>
+            <p class="about-primary-text">
+              Bilva Tech focuses on security-oriented engineering for connected, embedded, and complex digital systems. We bring a system-level perspective to architecture, integration, and security requirements.
+            </p>
+          </div>
+
+          <!-- Right Column: Engineering Philosophy & Technical Alignment -->
+          <div class="about-right-col">
+            <p class="about-secondary-text">
+              From hardware-isolated separation kernels to distributed IoT platforms and enterprise risk governance, our security practices are engineered directly into foundational architectures rather than treated as an external layer. We help organizations design, verify, and sustain resilient operations in high-assurance environments.
+            </p>
+            <p class="about-accent-quote">
+              Architecture-first security designed around real operational constraints and hardware capabilities.
+            </p>
+          </div>
+        </div>
+
+        <!-- Capability Highlights Row (Non-Statistical) -->
+        <div class="about-capabilities-row" role="list" aria-label="Core Engineering Capabilities">
+          <div class="about-capability-card" role="listitem" style="--cap-index: 0">
+            <div class="about-capability-indicator" aria-hidden="true"></div>
+            <span class="about-capability-num">01 //</span>
+            <h3 class="about-capability-title">System-Level Security</h3>
+            <p class="about-capability-desc">Architectural isolation and boundary enforcement across hardware and software.</p>
+          </div>
+
+          <div class="about-capability-card" role="listitem" style="--cap-index: 1">
+            <div class="about-capability-indicator" aria-hidden="true"></div>
+            <span class="about-capability-num">02 //</span>
+            <h3 class="about-capability-title">Embedded &amp; Connected Systems</h3>
+            <p class="about-capability-desc">Secure firmware, root-of-trust provisioning, and resilient edge platforms.</p>
+          </div>
+
+          <div class="about-capability-card" role="listitem" style="--cap-index: 2">
+            <div class="about-capability-indicator" aria-hidden="true"></div>
+            <span class="about-capability-num">03 //</span>
+            <h3 class="about-capability-title">Security-Focused Engineering</h3>
+            <p class="about-capability-desc">Security designed into early system specifications, reducing downstream rework.</p>
+          </div>
+
+          <div class="about-capability-card" role="listitem" style="--cap-index: 3">
+            <div class="about-capability-indicator" aria-hidden="true"></div>
+            <span class="about-capability-num">04 //</span>
+            <h3 class="about-capability-title">Tailored Technical Consulting</h3>
+            <p class="about-capability-desc">Direct engineering discussions aligned with specific standards and operational risks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="solutions-section" id="our-solutions" aria-label="Our Solutions">
       <div class="solutions-shell">
@@ -834,6 +895,7 @@
     <script src="main.js"></script>
     <script type="module" src="footer-mount.js"></script>
     <script type="module" src="why-globe.js"></script>
+    <script type="module" src="about-section.js"></script>
     <script type="module" src="comparison.js"></script>
     <script type="module" src="testimonials.js"></script>
   </body>
