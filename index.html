@@ -25,6 +25,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="components/CurvedInput.css" />
+    <link rel="stylesheet" href="testimonials.css" />
 
     <script type="importmap">
       {
@@ -441,6 +442,49 @@
       </div>
     </section>
 
+    <section class="testimonials-section" id="testimonials" aria-label="Customer Perspectives">
+      <div class="testimonials-shell">
+        <div class="testimonials-header-row">
+          <p class="testimonials-eyebrow">CUSTOMER PERSPECTIVES</p>
+          <h2 class="testimonials-heading">Security Built Around Real-World Requirements.</h2>
+          <p class="testimonials-copy">
+            Every system has different security requirements. Explore perspectives on the challenges, decisions, and engineering considerations behind secure connected systems.
+          </p>
+          <div class="testimonials-view-controls" role="group" aria-label="Perspectives display mode">
+            <button
+              type="button"
+              class="view-toggle-btn is-active"
+              data-target-view="marquee"
+              aria-pressed="true"
+            >
+              <i class="fa-solid fa-arrows-left-right" aria-hidden="true"></i>
+              <span>Animated Perspectives</span>
+            </button>
+            <button
+              type="button"
+              class="view-toggle-btn"
+              data-target-view="factual"
+              aria-pressed="false"
+            >
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              <span>Engineering Highlights</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dual-Direction Opposing Marquee Viewport (Framer Animation Reference) -->
+      <div class="testimonials-marquee-viewport" id="testimonials-marquee-viewport">
+        <!-- Row 1: Right to Left continuous marquee -->
+        <div class="marquee-row marquee-row-1" id="testimonials-row-1" aria-label="Technical Perspectives Row 1"></div>
+        <!-- Row 2: Left to Right continuous marquee -->
+        <div class="marquee-row marquee-row-2" id="testimonials-row-2" aria-label="Technical Perspectives Row 2"></div>
+      </div>
+
+      <!-- Factual Engineering Alternative View (Non-Simulated Fallback) -->
+      <div class="factual-perspectives-container" id="factual-perspectives-view" aria-label="Factual Engineering Highlights"></div>
+    </section>
+
     <section class="faq-section" id="faq" aria-label="Frequently Asked Questions">
       <div class="faq-shell">
         <div class="faq-intro">
@@ -658,5 +702,6 @@
     <script src="main.js"></script>
     <script type="module" src="footer-mount.js"></script>
     <script type="module" src="why-globe.js"></script>
+    <script type="module" src="testimonials.js"></script>
   </body>
 </html>
