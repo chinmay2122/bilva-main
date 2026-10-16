@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="components/CurvedInput.css" />
     <link rel="stylesheet" href="about-section.css" />
+    <link rel="stylesheet" href="solutions-bento.css" />
     <link rel="stylesheet" href="comparison.css" />
     <link rel="stylesheet" href="testimonials.css" />
 
@@ -208,178 +209,187 @@
       </div>
     </section>
 
+    <!-- ==================================================
+         OUR SOLUTIONS (ASYMMETRIC BENTO PRODUCT OFFERING)
+         ================================================== -->
     <section class="solutions-section" id="our-solutions" aria-label="Our Solutions">
       <div class="solutions-shell">
         <div class="solutions-intro">
           <p class="solutions-eyebrow">OUR SOLUTIONS</p>
-          <h2 class="solutions-heading">Security engineered for connected systems.</h2>
+          <h2 class="solutions-heading">Security Engineering for Complex Systems.</h2>
+          <p class="solutions-copy">
+            Explore security-focused solutions for embedded platforms, connected environments, and evolving digital infrastructure.
+          </p>
         </div>
 
+        <div class="bento-solutions-grid" role="list" aria-label="Bilva Tech solution offerings">
+          <!-- Card 01: Separation Kernel & Hypervisor (Hero Feature Card, 7 Cols) -->
+          <a
+            href="separation-kernel-hypervisor.html"
+            class="bento-solution-card bento-card-7"
+            role="listitem"
+            aria-label="Separation Kernel & Hypervisor — Explore Solution"
+          >
+            <div class="bento-card-indicator" aria-hidden="true"></div>
+            <div class="bento-card-content">
+              <div class="bento-meta-row">
+                <span class="bento-card-num">01 //</span>
+                <span class="bento-card-badge">System Isolation</span>
+              </div>
+              <h3 class="bento-card-title">Separation Kernel &amp; Hypervisor</h3>
+              <p class="bento-card-desc">
+                Hardware-enforced workload isolation and strict separation boundaries. Run mixed-criticality operating systems and applications on shared silicon with mathematical predictability and zero cross-partition leakage.
+              </p>
+            </div>
 
-        <div class="solutions-grid" id="solutions-grid" role="list" aria-label="Bilva Tech solutions">
-          <!-- Card 1 — Separation Kernel Hypervisor -->
-          <article class="solution-disclosure-card" role="listitem" data-index="0">
-            <div class="disclosure-media">
+            <div class="bento-visual-area">
               <img
                 src="assets/solution-kernel.jpg"
-                alt="Separation Kernel Hypervisor"
-                class="disclosure-img"
+                alt="Separation Kernel and Hypervisor System Isolation"
+                class="bento-img"
                 loading="lazy"
+                width="640"
+                height="360"
               />
-            </div>
-            <div class="disclosure-panel">
-              <button
-                class="disclosure-trigger"
-                type="button"
-                id="disclosure-trigger-1"
-                aria-expanded="false"
-                aria-controls="disclosure-content-1"
-              >
-                <span class="disclosure-title">Separation Kernel Hypervisor</span>
-                <span class="disclosure-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2.5 4.5L6 8L9.5 4.5" />
-                  </svg>
-                </span>
-              </button>
-              <div
-                class="disclosure-content"
-                id="disclosure-content-1"
-                role="region"
-                aria-labelledby="disclosure-trigger-1"
-              >
-                <div class="disclosure-content-inner">
-                  <p class="disclosure-desc">Isolate critical workloads with secure, predictable execution environments.</p>
-                  <a href="separation-kernel-hypervisor.html" class="disclosure-link">
-                    See More <span class="arrow">→</span>
-                  </a>
-                </div>
+              <div class="bento-tech-tag" aria-hidden="true">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Deterministic Workload Isolation</span>
               </div>
             </div>
-          </article>
 
-          <!-- Card 2 — IoT Solutions -->
-          <article class="solution-disclosure-card" role="listitem" data-index="1">
-            <div class="disclosure-media">
+            <div class="bento-card-footer">
+              <span class="bento-link-text">Explore Separation Kernel</span>
+              <span class="bento-link-arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+
+          <!-- Card 02: IoT Solutions (5 Cols) -->
+          <a
+            href="iot-solutions.html"
+            class="bento-solution-card bento-card-5"
+            role="listitem"
+            aria-label="IoT Solutions — Explore Solution"
+          >
+            <div class="bento-card-indicator" aria-hidden="true"></div>
+            <div class="bento-card-content">
+              <div class="bento-meta-row">
+                <span class="bento-card-num">02 //</span>
+                <span class="bento-card-badge">Connected Fleets</span>
+              </div>
+              <h3 class="bento-card-title">IoT Solutions</h3>
+              <p class="bento-card-desc">
+                Comprehensive security architecture for connected devices, industrial gateways, and distributed field edge platforms with cryptographic root-of-trust and secure OTA recovery.
+              </p>
+            </div>
+
+            <div class="bento-visual-area">
               <img
                 src="assets/solution-iot.jpg"
-                alt="IoT Solutions"
-                class="disclosure-img"
+                alt="Secure IoT and Connected Device Architecture"
+                class="bento-img"
                 loading="lazy"
+                width="480"
+                height="320"
               />
-            </div>
-            <div class="disclosure-panel">
-              <button
-                class="disclosure-trigger"
-                type="button"
-                id="disclosure-trigger-2"
-                aria-expanded="false"
-                aria-controls="disclosure-content-2"
-              >
-                <span class="disclosure-title">IoT Solutions</span>
-                <span class="disclosure-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2.5 4.5L6 8L9.5 4.5" />
-                  </svg>
-                </span>
-              </button>
-              <div
-                class="disclosure-content"
-                id="disclosure-content-2"
-                role="region"
-                aria-labelledby="disclosure-trigger-2"
-              >
-                <div class="disclosure-content-inner">
-                  <p class="disclosure-desc">Connect devices, edge platforms, and applications through secure, scalable IoT architecture.</p>
-                  <a href="iot-solutions.html" class="disclosure-link">
-                    See More <span class="arrow">→</span>
-                  </a>
-                </div>
+              <div class="bento-tech-tag" aria-hidden="true">
+                <i class="fa-solid fa-network-wired"></i>
+                <span>Edge &amp; Gateway Protection</span>
               </div>
             </div>
-          </article>
 
-          <!-- Card 3 — Cybersecurity Solutions -->
-          <article class="solution-disclosure-card" role="listitem" data-index="2">
-            <div class="disclosure-media">
+            <div class="bento-card-footer">
+              <span class="bento-link-text">Explore IoT Solutions</span>
+              <span class="bento-link-arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+
+          <!-- Card 03: Cybersecurity Solutions (5 Cols) -->
+          <a
+            href="cybersecurity-solutions.html"
+            class="bento-solution-card bento-card-5"
+            role="listitem"
+            aria-label="Cybersecurity Solutions — Explore Solution"
+          >
+            <div class="bento-card-indicator" aria-hidden="true"></div>
+            <div class="bento-card-content">
+              <div class="bento-meta-row">
+                <span class="bento-card-num">03 //</span>
+                <span class="bento-card-badge">Threat Defense</span>
+              </div>
+              <h3 class="bento-card-title">Cybersecurity Solutions</h3>
+              <p class="bento-card-desc">
+                Protect enterprise networks, critical data, and cloud infrastructure with integrated defense postures, active vulnerability mitigation, and proactive threat intelligence.
+              </p>
+            </div>
+
+            <div class="bento-visual-area">
               <img
                 src="assets/solution-cybersecurity.jpg"
-                alt="Cybersecurity Solutions"
-                class="disclosure-img"
+                alt="Cybersecurity and Digital Operations Defense"
+                class="bento-img"
                 loading="lazy"
+                width="480"
+                height="320"
               />
-            </div>
-            <div class="disclosure-panel">
-              <button
-                class="disclosure-trigger"
-                type="button"
-                id="disclosure-trigger-3"
-                aria-expanded="false"
-                aria-controls="disclosure-content-3"
-              >
-                <span class="disclosure-title">Cybersecurity Solutions</span>
-                <span class="disclosure-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2.5 4.5L6 8L9.5 4.5" />
-                  </svg>
-                </span>
-              </button>
-              <div
-                class="disclosure-content"
-                id="disclosure-content-3"
-                role="region"
-                aria-labelledby="disclosure-trigger-3"
-              >
-                <div class="disclosure-content-inner">
-                  <p class="disclosure-desc">Protect systems, applications, and data with integrated cybersecurity solutions.</p>
-                  <a href="cybersecurity-solutions.html" class="disclosure-link">
-                    See More <span class="arrow">→</span>
-                  </a>
-                </div>
+              <div class="bento-tech-tag" aria-hidden="true">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Continuous Cyber Defense</span>
               </div>
             </div>
-          </article>
 
-          <!-- Card 4 — Information Security Consulting -->
-          <article class="solution-disclosure-card" role="listitem" data-index="3">
-            <div class="disclosure-media">
+            <div class="bento-card-footer">
+              <span class="bento-link-text">Explore Cybersecurity</span>
+              <span class="bento-link-arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+
+          <!-- Card 04: Information Security Consulting (7 Cols) -->
+          <a
+            href="information-security-consulting.html"
+            class="bento-solution-card bento-card-7"
+            role="listitem"
+            aria-label="Information Security Consulting — Explore Solution"
+          >
+            <div class="bento-card-indicator" aria-hidden="true"></div>
+            <div class="bento-card-content">
+              <div class="bento-meta-row">
+                <span class="bento-card-num">04 //</span>
+                <span class="bento-card-badge">Strategy &amp; Assurance</span>
+              </div>
+              <h3 class="bento-card-title">Information Security Consulting</h3>
+              <p class="bento-card-desc">
+                Engineering-led advisory covering architecture risk assessments, security-by-design audits, and compliance readiness (IEC 62443, ISO 27001). Translating governance mandates into verifiable engineering controls.
+              </p>
+            </div>
+
+            <div class="bento-visual-area">
               <img
                 src="assets/solution-consulting.jpg"
-                alt="Information Security Consulting"
-                class="disclosure-img"
+                alt="Information Security and Architecture Consulting"
+                class="bento-img"
                 loading="lazy"
+                width="640"
+                height="360"
               />
-            </div>
-            <div class="disclosure-panel">
-              <button
-                class="disclosure-trigger"
-                type="button"
-                id="disclosure-trigger-4"
-                aria-expanded="false"
-                aria-controls="disclosure-content-4"
-              >
-                <span class="disclosure-title">Information Security Consulting</span>
-                <span class="disclosure-icon" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2.5 4.5L6 8L9.5 4.5" />
-                  </svg>
-                </span>
-              </button>
-              <div
-                class="disclosure-content"
-                id="disclosure-content-4"
-                role="region"
-                aria-labelledby="disclosure-trigger-4"
-              >
-                <div class="disclosure-content-inner">
-                  <p class="disclosure-desc">Strengthen security strategy, manage risks, and improve organizational readiness.</p>
-                  <a href="information-security-consulting.html" class="disclosure-link">
-                    See More <span class="arrow">→</span>
-                  </a>
-                </div>
+              <div class="bento-tech-tag" aria-hidden="true">
+                <i class="fa-solid fa-file-shield"></i>
+                <span>Risk &amp; Architecture Advisory</span>
               </div>
             </div>
-          </article>
+
+            <div class="bento-card-footer">
+              <span class="bento-link-text">Explore Consulting Services</span>
+              <span class="bento-link-arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
         </div>
       </div>
     </section>

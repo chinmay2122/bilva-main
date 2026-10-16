@@ -25,6 +25,7 @@ const assets = [
   "components/CurvedInput.css",
   "about-section.css",
   "about-section.js",
+  "solutions-bento.css",
   "comparison.css",
   "comparison.js",
   "testimonials.css",
